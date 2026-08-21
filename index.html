@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistem Rental Alat Berat — situs sewa + panel operasional</title>
+<meta name="description" content="Situs sewa alat berat lengkap dengan panel operasional: katalog beserta ketersediaan, biaya yang tampil sebelum penyewa bertanya, dan satu jadwal yang tidak bisa dijanjikan dua kali.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="assets/landing.css">
+</head>
+<body>
+
+<a class="lompat" href="#isi">Lompat ke isi</a>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="merek" href="#atas">Rental&nbsp;Alat&nbsp;Berat</a>
+    <nav class="bar-nav" aria-label="Navigasi halaman">
+      <a href="#fitur">Fitur</a>
+      <a href="#pratinjau">Pratinjau</a>
+      <a href="#alur">Alur kerja</a>
+      <a href="#untuk-siapa">Untuk siapa</a>
+    </nav>
+    <button class="tema" type="button" aria-pressed="false" aria-label="Ganti mode tampilan">
+      <svg class="i-terang" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="i-gelap" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="isi">
+
+  <!-- ── hero ──────────────────────────────────────────────────────────── -->
+  <section class="hero" id="atas">
+    <div class="wrap">
+      <p class="kicker">Situs sewa alat berat + panel operasional</p>
+      <h1>Penyewa tahu harganya. Tim tahu unitnya di mana.</h1>
+      <p class="lede">
+        Calon penyewa memilih alat, tanggal, dan lokasi proyeknya sendiri — lalu
+        melihat perkiraan biayanya sebelum menghubungi siapa pun. Permintaannya
+        masuk langsung ke panel tim, lengkap dengan unit mana yang dipesan dan
+        kapan. Tidak ada lagi jadwal yang tersimpan di kepala masing-masing.
+      </p>
+      <div class="tombol-baris">
+        <a class="btn btn-utama" href="#pratinjau">Lihat tampilannya</a>
+        <a class="btn btn-garis" href="#fitur">Apa saja isinya</a>
+      </div>
+
+      <dl class="angka">
+        <div><dt>3</dt><dd>skema tarif: harian, mingguan, bulanan</dd></div>
+        <div><dt>1</dt><dd>jadwal untuk tiap unit fisik</dd></div>
+        <div><dt>0</dt><dd>bentrok jadwal yang bisa lolos</dd></div>
+        <div><dt>24/7</dt><dd>katalog dan simulasi biaya tetap melayani</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── masalah ───────────────────────────────────────────────────────── -->
+  <section class="pita">
+    <div class="wrap pita-in">
+      <div>
+        <h2 class="h-kecil">Yang biasanya terjadi</h2>
+        <ul class="daftar-silang">
+          <li>Excavator yang sama dijanjikan ke dua proyek karena jadwalnya dicatat di dua tempat berbeda.</li>
+          <li>Penyewa harus menelepon dulu hanya untuk bertanya "kira-kira berapa?".</li>
+          <li>Tarif sudah naik, tapi penawaran lama ikut berubah nilainya.</li>
+          <li>Ditanya "unit apa saja yang bebas minggu depan?", jawabannya perlu setengah jam.</li>
+          <li>Jumlah unit di situs tidak pernah cocok dengan armada sebenarnya.</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="h-kecil">Yang dilakukan aplikasi ini</h2>
+        <ul class="daftar-centang">
+          <li>Satu jadwal untuk tiap unit. Tanggal yang sudah terpakai ditolak, bukan diingatkan belakangan.</li>
+          <li>Perkiraan biaya lengkap tampil di layar sebelum penyewa mengirim apa pun.</li>
+          <li>Harga yang disepakati tersimpan apa adanya. Tarif boleh naik besok.</li>
+          <li>Isi tanggalnya, katalog langsung menampilkan unit yang benar-benar bebas.</li>
+          <li>Jumlah unit dihitung sendiri dari data armada.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── fitur ─────────────────────────────────────────────────────────── -->
+  <section class="bagian" id="fitur">
+    <div class="wrap">
+      <h2>Apa saja isinya</h2>
+      <p class="sub">Dua sisi: halaman yang dilihat penyewa, dan panel yang dipakai tim.</p>
+
+      <h3 class="h-kelompok">Untuk calon penyewa</h3>
+      <div class="kisi">
+        <article class="kartu">
+          <h4>Katalog yang menunjukkan ketersediaan</h4>
+          <p>Saring menurut jenis alat dan pool. Isi rentang tanggalnya, dan yang tampil hanya unit yang benar-benar bebas pada tanggal itu.</p>
+        </article>
+        <article class="kartu">
+          <h4>Perkiraan biaya sebelum bertanya</h4>
+          <p>Pilih durasi, jumlah unit, lokasi proyek, operator, dan jam kerja — angkanya berubah seketika. Sewa unit, operator, mobilisasi, dan pajak dirinci satu per satu.</p>
+        </article>
+        <article class="kartu">
+          <h4>Tarif termurah ditunjukkan, bukan dipaksakan</h4>
+          <p>Kalau menyewa 7 hari lebih murah pakai tarif mingguan, sistem mengatakannya beserta selisihnya. Pilihan tetap di tangan penyewa.</p>
+        </article>
+        <article class="kartu">
+          <h4>Satu pengajuan, beberapa jenis alat</h4>
+          <p>Excavator, dump truck, dan breaker bisa diminta sekaligus dalam satu permintaan — tidak perlu mengirim tiga kali.</p>
+        </article>
+        <article class="kartu">
+          <h4>Peta lokasi pool</h4>
+          <p>Seluruh pool dalam satu peta, lengkap dengan alamat dan tautan rute untuk tiap titiknya.</p>
+        </article>
+        <article class="kartu">
+          <h4>Nyaman dibaca di mana saja</h4>
+          <p>Tampilan menyesuaikan layar ponsel sampai desktop, dengan mode terang dan gelap.</p>
+        </article>
+      </div>
+
+      <h3 class="h-kelompok">Untuk tim operasional</h3>
+      <div class="kisi">
+        <article class="kartu">
+          <h4>Armada per unit, bukan per model</h4>
+          <p>Dua excavator dengan tipe sama punya jadwal, status, foto, dan riwayatnya masing-masing — karena memang begitu kenyataannya di lapangan.</p>
+        </article>
+        <article class="kartu">
+          <h4>Permintaan masuk langsung ke panel</h4>
+          <p>Setiap pengajuan dari situs muncul di daftar rental beserta rincian biayanya, sekaligus menyiapkan pesan WhatsApp berisi rincian yang sama.</p>
+        </article>
+        <article class="kartu">
+          <h4>Konfirmasi yang memeriksa ulang</h4>
+          <p>Saat dikonfirmasi, ketersediaan diperiksa sekali lagi. Kalau unitnya keburu diambil rental lain, konfirmasinya ditolak — bukan diteruskan lalu ketahuan di lapangan.</p>
+        </article>
+        <article class="kartu">
+          <h4>Salah klik bisa dikembalikan</h4>
+          <p>Status rental bisa maju dan mundur. Semua pilihan tindakan ditampilkan, yang tidak berlaku dimatikan beserta alasannya.</p>
+        </article>
+        <article class="kartu">
+          <h4>Tarif punya riwayat</h4>
+          <p>Menaikkan harga membuat catatan baru dengan tanggal berlaku. Rental yang sudah jalan tetap memakai angka saat disepakati.</p>
+        </article>
+        <article class="kartu">
+          <h4>Akses sesuai peran</h4>
+          <p>Sales, operasional, admin, dan pemilik melihat menu yang berbeda. Yang tidak boleh diakses tidak ditampilkan sama sekali.</p>
+        </article>
+        <article class="kartu">
+          <h4>Semua perubahan tercatat</h4>
+          <p>Siapa mengubah tarif apa, kapan, dari berapa jadi berapa — tersimpan lengkap beserta nilai lama dan barunya.</p>
+        </article>
+        <article class="kartu">
+          <h4>Isi situs diatur dari panel</h4>
+          <p>Nama perusahaan, alamat, nomor telepon, tarif, area layanan, foto alat, dan pajak diubah sendiri tanpa perlu menyentuh kode.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── pratinjau ─────────────────────────────────────────────────────── -->
+  <section class="bagian bagian-alt" id="pratinjau">
+    <div class="wrap">
+      <h2>Tampilannya</h2>
+      <p class="sub">Klik nama halaman untuk berpindah.</p>
+
+      <div class="peraga" id="peraga">
+        <div class="peraga-tab" role="tablist" aria-label="Halaman aplikasi">
+          <button role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">Beranda</button>
+          <button role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false">Katalog</button>
+          <button role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false">Detail unit</button>
+          <button role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false">Simulasi biaya</button>
+          <button role="tab" id="tab-5" aria-controls="panel-5" aria-selected="false">Pengajuan</button>
+          <button role="tab" id="tab-6" aria-controls="panel-6" aria-selected="false">Panel: rental</button>
+          <button role="tab" id="tab-7" aria-controls="panel-7" aria-selected="false">Panel: alat</button>
+          <button role="tab" id="tab-8" aria-controls="panel-8" aria-selected="false">Panel: tarif</button>
+        </div>
+
+        <div class="peraga-isi">
+          <figure role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+            <div class="bingkai"><img src="img/01-beranda.png" alt="Halaman beranda: ketersediaan hari ini dan daftar tarif" width="1280" height="800" loading="lazy" data-berkas="01-beranda.png"></div>
+            <figcaption>Beranda — ketersediaan hari ini, tarif per unit, dan foto armada yang berganti sendiri.</figcaption>
+          </figure>
+          <figure role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+            <div class="bingkai"><img src="img/02-katalog.png" alt="Katalog alat berat dengan filter kategori dan pool" width="1280" height="800" loading="lazy" data-berkas="02-katalog.png"></div>
+            <figcaption>Katalog — saring menurut jenis alat, pool, dan rentang tanggal sewa.</figcaption>
+          </figure>
+          <figure role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+            <div class="bingkai"><img src="img/03-detail-unit.png" alt="Halaman detail unit dengan kotak simulasi sewa" width="1280" height="800" loading="lazy" data-berkas="03-detail-unit.png"></div>
+            <figcaption>Detail unit — spesifikasi, daftar unit yang tersedia, dan hitungan biaya di sebelahnya.</figcaption>
+          </figure>
+          <figure role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+            <div class="bingkai"><img src="img/04-simulasi.png" alt="Halaman simulasi biaya" width="1280" height="800" loading="lazy" data-berkas="04-simulasi.png"></div>
+            <figcaption>Simulasi biaya — rincian sewa, operator, mobilisasi, dan pajak sebelum menghubungi siapa pun.</figcaption>
+          </figure>
+          <figure role="tabpanel" id="panel-5" aria-labelledby="tab-5" hidden>
+            <div class="bingkai"><img src="img/05-pengajuan.png" alt="Formulir pengajuan sewa dengan ringkasan biaya" width="1280" height="800" loading="lazy" data-berkas="05-pengajuan.png"></div>
+            <figcaption>Pengajuan — beberapa jenis alat sekaligus, dengan ringkasan biaya yang ikut berubah.</figcaption>
+          </figure>
+          <figure role="tabpanel" id="panel-6" aria-labelledby="tab-6" hidden>
+            <div class="bingkai"><img src="img/06-admin-rental.png" alt="Panel admin: daftar rental" width="1280" height="800" loading="lazy" data-berkas="06-admin-rental.png"></div>
+            <figcaption>Panel · Rental — permintaan masuk, konfirmasi, dan perjalanan tiap sewa sampai selesai.</figcaption>
+          </figure>
+          <figure role="tabpanel" id="panel-7" aria-labelledby="tab-7" hidden>
+            <div class="bingkai"><img src="img/07-admin-alat.png" alt="Panel admin: daftar alat dan jadwal pemakaiannya" width="1280" height="800" loading="lazy" data-berkas="07-admin-alat.png"></div>
+            <figcaption>Panel · Alat — status tiap unit beserta sedang dipakai proyek apa dan sampai kapan.</figcaption>
+          </figure>
+          <figure role="tabpanel" id="panel-8" aria-labelledby="tab-8" hidden>
+            <div class="bingkai"><img src="img/08-admin-tarif.png" alt="Panel admin: tarif dan riwayat perubahannya" width="1280" height="800" loading="lazy" data-berkas="08-admin-tarif.png"></div>
+            <figcaption>Panel · Tarif — harga per skema beserta riwayat perubahannya.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <p class="nota">
+        Seluruh angka, nama perusahaan, alamat, dan nomor telepon pada gambar di
+        atas adalah <strong>data karangan</strong> yang dibuat khusus untuk
+        pratinjau ini.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── alur kerja ────────────────────────────────────────────────────── -->
+  <section class="bagian" id="alur">
+    <div class="wrap">
+      <h2>Dari penyewa membuka situs, sampai unit kembali ke pool</h2>
+
+      <ol class="langkah">
+        <li>
+          <h3>Penyewa menghitung sendiri</h3>
+          <p>
+            Membuka katalog, memilih alat dan tanggal, mengisi lokasi proyek.
+            Perkiraan biayanya langsung tampil — termasuk operator, mobilisasi,
+            dan pajak. Tidak perlu menelepon hanya untuk bertanya harga.
+          </p>
+        </li>
+        <li>
+          <h3>Permintaan masuk ke panel</h3>
+          <p>
+            Pengajuan muncul di daftar rental dengan status <em>menunggu</em>,
+            lengkap dengan unit yang diminta, tanggalnya, dan rincian biayanya.
+            Rinciannya juga tersedia untuk dikirim lewat WhatsApp ke tim.
+          </p>
+        </li>
+        <li>
+          <h3>Tim mengonfirmasi</h3>
+          <p>
+            Saat dikonfirmasi, ketersediaan diperiksa sekali lagi. Kalau unitnya
+            keburu diambil rental lain, konfirmasi ditolak dan tim tahu saat itu
+            juga. Kalau lolos, unit itu terkunci untuk tanggal tersebut.
+          </p>
+        </li>
+        <li>
+          <h3>Berjalan, lalu selesai</h3>
+          <p>
+            Unit ditandai berjalan saat sudah di lokasi, dan selesai saat
+            kembali — jadwalnya otomatis terbuka lagi untuk penyewa berikutnya.
+            Harga yang tersimpan tetap harga saat disepakati.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── untuk siapa ───────────────────────────────────────────────────── -->
+  <section class="bagian bagian-alt" id="untuk-siapa">
+    <div class="wrap">
+      <h2>Cocok untuk</h2>
+      <div class="kisi">
+        <article class="kartu">
+          <h4>Perusahaan rental alat berat</h4>
+          <p>Punya armada sendiri di satu atau beberapa pool, dan jadwalnya masih diurus lewat catatan, papan tulis, atau grup obrolan.</p>
+        </article>
+        <article class="kartu">
+          <h4>Yang sering ditanya harga</h4>
+          <p>Banyak waktu tim habis menjawab pertanyaan tarif yang sama berulang-ulang sebelum penyewa benar-benar serius.</p>
+        </article>
+        <article class="kartu">
+          <h4>Yang mulai kewalahan mencatat</h4>
+          <p>Armadanya sudah cukup banyak sehingga siapa memakai unit mana, sampai kapan, mulai sulit diingat.</p>
+        </article>
+        <article class="kartu">
+          <h4>Yang butuh situs sekaligus sistem</h4>
+          <p>Ingin punya company profile yang layak dilihat calon klien, tapi enggan mengurus dua aplikasi terpisah.</p>
+        </article>
+      </div>
+
+      <div class="kotak-hati-hati">
+        <h3>Yang perlu disiapkan</h3>
+        <ul>
+          <li>Daftar armada: kode unit, jenis, tahun, dan pool tempatnya disimpan.</li>
+          <li>Tarif untuk tiap jenis alat — harian, dan bila ada, mingguan serta bulanan.</li>
+          <li>Biaya operator, mobilisasi, dan area layanan beserta jaraknya.</li>
+          <li>Identitas perusahaan: nama, alamat tiap pool, nomor telepon, dan legalitas.</li>
+        </ul>
+        <p style="margin:12px 0 0;font-size:14px">
+          Semuanya diisi lewat panel, tanpa menyentuh kode. Aplikasinya sudah
+          berisi data contoh supaya bisa dicoba dulu sebelum diisi data asli.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="kaki">
+  <div class="wrap kaki-in">
+    <p>Sistem rental alat berat — situs sewa dan panel operasional dalam satu aplikasi.</p>
+    <p class="kaki-nota">Seluruh data pada pratinjau adalah karangan untuk keperluan peragaan.</p>
+  </div>
+</footer>
+
+<script src="assets/landing.js"></script>
+</body>
+</html>

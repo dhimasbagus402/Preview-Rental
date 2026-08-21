@@ -1,0 +1,253 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Landing page — berdiri sendiri, tidak berbagi berkas apa pun dengan
+   aplikasinya. Sengaja begitu: halaman ini harus bisa di-deploy ke hosting
+   statis mana pun tanpa PHP, dan mengubah gaya aplikasi tidak boleh diam-diam
+   mengubah halaman perkenalannya.
+
+   Bahasa visualnya tetap sama dengan aplikasi: datar, bergaris, aksen hijau
+   tua #1b3b2f, huruf Archivo.
+
+   BAWAANNYA MODE TERANG, bukan mengikuti setelan sistem. Halaman perkenalan
+   sering dibuka lewat tautan yang dibagikan, dan tampilannya sebaiknya sama
+   bagi siapa pun yang membukanya. Mode gelap tetap ada lewat tombol di kanan
+   atas, dan pilihannya diingat.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --aksen: #1b3b2f;
+  --teks: #201e1d;
+  --latar: #f3f2f2;
+  --permukaan: #eae9e9;
+  --garis: rgb(32 30 29 / .34);
+  --tautan: #1b3b2f;
+  --wrap: 1120px;
+  --gutter: 24px;
+  --radius: 5px;
+  --font: "Archivo", system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+html[data-tema="gelap"] {
+  --aksen: #6fbf9a;
+  --teks: #f3f2f2;
+  --latar: #201e1d;
+  --permukaan: #2a2827;
+  --garis: rgb(243 242 242 / .28);
+  --tautan: #6fbf9a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 400 16px/1.6 var(--font);
+  color: var(--teks);
+  background: var(--latar);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; margin: 0 0 12px; letter-spacing: -.015em; }
+p { margin: 0 0 14px; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; }
+em { font-style: normal; font-weight: 600; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding-inline: var(--gutter); }
+
+.lompat {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--aksen); color: var(--latar);
+  padding: 10px 16px; font-weight: 800;
+}
+.lompat:focus { left: 0; }
+
+/* ── bilah atas ───────────────────────────────────────────────────────── */
+.bar {
+  position: sticky; top: 0; z-index: 30;
+  background: var(--latar);
+  border-bottom: 2px solid var(--garis);
+}
+.bar-in { display: flex; align-items: center; gap: 20px; min-height: 62px; }
+.merek { font-weight: 800; font-size: 15px; letter-spacing: .02em; color: inherit; text-decoration: none; }
+.bar-nav { display: flex; gap: 20px; margin-left: auto; }
+.bar-nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.bar-nav a:hover { color: var(--aksen); text-decoration: underline; text-underline-offset: 4px; }
+
+.tema {
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px; padding: 0; cursor: pointer;
+  color: inherit; background: none;
+  border: 1px solid var(--garis); border-radius: var(--radius);
+}
+.tema:hover { background: color-mix(in srgb, var(--teks) 7%, transparent); }
+.i-gelap { display: none; }
+html[data-tema="gelap"] .i-terang { display: none; }
+html[data-tema="gelap"] .i-gelap { display: block; }
+
+/* ── hero ─────────────────────────────────────────────────────────────── */
+.hero {
+  background: var(--aksen);
+  color: var(--latar);
+  padding: 72px 0 60px;
+}
+html[data-tema="gelap"] .hero { color: #201e1d; }
+
+.kicker {
+  font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+  opacity: .85; margin-bottom: 18px;
+}
+.hero h1 { font-size: clamp(32px, 5.4vw, 58px); max-width: 17ch; margin-bottom: 20px; }
+.lede { font-size: 17px; line-height: 1.55; max-width: 62ch; opacity: .92; }
+
+.tombol-baris { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: var(--radius);
+  font-weight: 800; font-size: 14px; text-decoration: none;
+  border: 1px solid transparent;
+}
+.btn-utama { background: var(--latar); color: var(--aksen); }
+.btn-utama:hover { background: #fff; }
+html[data-tema="gelap"] .btn-utama { background: #201e1d; color: #6fbf9a; }
+.btn-garis { border-color: currentColor; color: inherit; }
+.btn-garis:hover { background: rgb(255 255 255 / .12); }
+
+.angka {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px; margin: 44px 0 0;
+  border-top: 1px solid rgb(255 255 255 / .28); padding-top: 24px;
+}
+html[data-tema="gelap"] .angka { border-top-color: rgb(32 30 29 / .3); }
+.angka div { margin: 0; }
+.angka dt { font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
+.angka dd { margin: 4px 0 0; font-size: 12.5px; opacity: .85; line-height: 1.45; }
+
+/* ── pita masalah/solusi ──────────────────────────────────────────────── */
+.pita { background: var(--permukaan); border-bottom: 2px solid var(--garis); }
+.pita-in {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 34px; padding-block: 40px;
+}
+.h-kecil { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .72; margin-bottom: 14px; }
+.daftar-silang, .daftar-centang { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.daftar-silang li, .daftar-centang li { position: relative; padding-left: 26px; font-size: 14.5px; line-height: 1.55; }
+.daftar-silang li::before, .daftar-centang li::before {
+  position: absolute; left: 0; top: 0; font-weight: 800;
+}
+.daftar-silang li::before { content: "\00d7"; color: #a3231a; font-size: 17px; line-height: 1.35; }
+html[data-tema="gelap"] .daftar-silang li::before { color: #ffb4ab; }
+.daftar-centang li::before { content: "\2713"; color: var(--aksen); }
+
+/* ── bagian umum ──────────────────────────────────────────────────────── */
+.bagian { padding-block: 56px; border-bottom: 2px solid var(--garis); }
+.bagian-alt { background: var(--permukaan); }
+.bagian h2 { font-size: clamp(24px, 3.2vw, 34px); }
+.sub { font-size: 15px; opacity: .74; max-width: 62ch; }
+.h-kelompok {
+  font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  opacity: .72; margin: 36px 0 14px;
+}
+
+.kisi { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.kartu {
+  padding: 20px; border: 1px solid var(--garis); border-radius: var(--radius);
+  background: var(--latar);
+}
+.kartu h4 { font-size: 15.5px; margin-bottom: 8px; }
+.kartu p { font-size: 14px; line-height: 1.6; opacity: .82; margin: 0; }
+
+/* ── peraga tangkapan layar ───────────────────────────────────────────── */
+.peraga { margin-top: 26px; }
+.peraga-tab { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.peraga-tab button {
+  padding: 8px 14px; cursor: pointer;
+  font: 800 12.5px var(--font); color: inherit;
+  background: var(--latar);
+  border: 1px solid var(--garis); border-radius: var(--radius);
+}
+.peraga-tab button:hover { background: color-mix(in srgb, var(--teks) 7%, transparent); }
+.peraga-tab button[aria-selected="true"] {
+  background: var(--aksen); color: var(--latar); border-color: var(--aksen);
+}
+html[data-tema="gelap"] .peraga-tab button[aria-selected="true"] { color: #201e1d; }
+
+.peraga-isi figure { margin: 0; }
+.bingkai {
+  position: relative;
+  border: 1px solid var(--garis); border-radius: var(--radius);
+  background: var(--latar); overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+.bingkai img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+/* Sebelum tangkapan layarnya ada, bingkainya menjelaskan berkas apa yang
+   ditunggu — bukan gambar rusak. Kelasnya dipasang landing.js. */
+.bingkai.kosong img { display: none; }
+.bingkai.kosong::after {
+  content: "Tangkapan layar belum ada\00a0\2014\00a0letakkan " attr(data-berkas) " di landing/img/";
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  padding: 24px; text-align: center;
+  font-size: 13px; line-height: 1.6;
+  color: color-mix(in srgb, var(--teks) 66%, transparent);
+  background: repeating-linear-gradient(135deg,
+    color-mix(in srgb, var(--teks) 5%, transparent) 0 10px,
+    transparent 10px 20px);
+}
+.peraga-isi figcaption { font-size: 13.5px; opacity: .76; margin-top: 10px; line-height: 1.6; }
+
+.nota {
+  margin-top: 22px; padding: 14px 16px;
+  background: var(--latar);
+  border-left: 3px solid var(--aksen); border-radius: var(--radius);
+  font-size: 13px; line-height: 1.6;
+}
+.bagian:not(.bagian-alt) .nota { background: var(--permukaan); }
+
+/* ── langkah bernomor ─────────────────────────────────────────────────── */
+.langkah { list-style: none; counter-reset: n; margin: 26px 0 0; padding: 0; display: grid; gap: 22px; }
+.langkah li {
+  counter-increment: n;
+  display: grid; grid-template-columns: 44px 1fr; gap: 16px;
+  padding-top: 20px; border-top: 1px solid var(--garis);
+}
+.langkah li::before {
+  content: counter(n, decimal-leading-zero);
+  font: 800 15px var(--font); color: var(--aksen);
+  grid-column: 1; grid-row: 1;
+}
+
+/* Nomor langkah adalah ::before pada <li>, dan di dalam grid ia ikut jadi
+   item. Tanpa penempatan tegas, urutannya jadi: nomor di kolom 1, judul di
+   kolom 2, lalu PARAGRAF terlempar ke kolom 1 baris berikutnya — lebarnya
+   44px, dan teksnya patah satu kata per baris. */
+.langkah h3 { grid-column: 2; grid-row: 1; font-size: 17px; }
+.langkah p {
+  grid-column: 2;
+  font-size: 14.5px; line-height: 1.65; opacity: .84; max-width: 66ch;
+  margin: 0;
+}
+
+/* ── kotak peringatan ─────────────────────────────────────────────────── */
+.kotak-hati-hati {
+  margin-top: 30px; padding: 20px 22px;
+  background: var(--permukaan);
+  border-left: 3px solid var(--aksen); border-radius: var(--radius);
+}
+.kotak-hati-hati h3 { font-size: 15px; margin-bottom: 10px; }
+.kotak-hati-hati ul { margin: 0; padding-left: 20px; display: grid; gap: 7px; }
+.kotak-hati-hati li { font-size: 14px; line-height: 1.6; }
+
+/* ── kaki ─────────────────────────────────────────────────────────────── */
+.kaki { padding-block: 30px; background: var(--permukaan); }
+.kaki-in p { margin: 0; font-size: 13.5px; }
+.kaki-nota { opacity: .68; margin-top: 6px !important; font-size: 12.5px !important; }
+
+@media (max-width: 720px) {
+  :root { --gutter: 18px; }
+  .bar-nav { display: none; }
+  .hero { padding: 52px 0 44px; }
+  /* Satu kolom: nomor, judul, dan paragraf menumpuk. Penempatan kolom 2 di
+     atas tidak berlaku lagi, jadi dikembalikan ke kolom 1. */
+  .langkah li { grid-template-columns: 1fr; gap: 6px; }
+  .langkah li::before { grid-row: auto; }
+  .langkah h3, .langkah p { grid-column: 1; grid-row: auto; }
+}
