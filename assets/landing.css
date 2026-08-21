@@ -226,6 +226,28 @@ html[data-tema="gelap"] .peraga-tab button[aria-selected="true"] { color: #201e1
   margin: 0;
 }
 
+/* ── ajakan mencoba demo ────────────────────────────────── */
+.ajakan {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 30px; align-items: start;
+}
+.ajakan h2 { margin-bottom: 10px; }
+.ajakan .tombol-baris { margin-top: 20px; }
+.btn-gelap { background: var(--aksen); color: var(--latar); }
+.btn-gelap:hover { background: color-mix(in srgb, var(--aksen) 85%, black); }
+html[data-tema="gelap"] .btn-gelap { color: #201e1d; }
+.btn-tipis { border-color: var(--garis); color: inherit; }
+.btn-tipis:hover { background: color-mix(in srgb, var(--teks) 7%, transparent); }
+
+.ajakan-daftar { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.ajakan-daftar li {
+  padding: 14px 16px; font-size: 13.5px; line-height: 1.6;
+  background: var(--permukaan);
+  border-left: 3px solid var(--aksen); border-radius: var(--radius);
+}
+.bagian-alt .ajakan-daftar li { background: var(--latar); }
+.ajakan-daftar b { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+
 /* ── kotak peringatan ─────────────────────────────────────────────────── */
 .kotak-hati-hati {
   margin-top: 30px; padding: 20px 22px;
