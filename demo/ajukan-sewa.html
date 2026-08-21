@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pengajuan Sewa — PT Bumi Konstruksi Nusantara</title>
+<meta name="description" content="Penyewaan alat berat untuk proyek jalan, pelabuhan, dan tambang di Jawa Timur.">
+<meta name="robots" content="noindex"><link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi is-aktif" href="index.html" aria-current="page">Situs</a><a class="demo-sisi" href="admin.html">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+<a class="skip-link" href="#main">Lompat ke konten</a>
+
+  
+  <p class="pita-demo" role="note">Situs contoh. Nama perusahaan, alamat, nomor telepon, titik peta, dan seluruh tarif di sini adalah data karangan untuk keperluan demonstrasi.</p>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="index.html">BUMI KONSTRUKSI</a>
+    <input type="checkbox" id="navtoggle" class="nav-toggle">
+    <label class="nav-burger" for="navtoggle" aria-label="Buka menu navigasi">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+    </label>
+    <nav class="nav-links" aria-label="Navigasi utama">
+      <a href="index.html" >Beranda</a>
+      <a href="alat-berat.html" >Alat Berat</a>
+      <a href="simulasi-biaya.html" >Simulasi Biaya</a>
+      <a href="kontak.html" >Kontak</a>
+      <a href="ajukan-sewa.html" class="btn btn-primary" style="margin-left:8px">Ajukan Sewa</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Ganti ke mode gelap">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main"><div class="wrap" style="padding-inline:0">
+  <ol class="wizard-bar" style="list-style:none;margin:0;padding:0">
+    <li class="wz wz-done">
+      <span class="wz-n" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg></span>
+      <span><span class="wz-t">Pilih unit</span><span class="wz-s" style="display:block">Dari katalog</span></span>
+    </li>
+    <li class="wz wz-current" aria-current="step">
+      <span class="wz-n" aria-hidden="true">2</span>
+      <span><span class="wz-t">Jadwal &amp; lokasi</span><span class="wz-s" style="display:block">Sedang diisi</span></span>
+    </li>
+    <li class="wz wz-todo">
+      <span class="wz-n" aria-hidden="true">3</span>
+      <span><span class="wz-t">Konfirmasi &amp; kirim</span><span class="wz-s" style="display:block">Penawaran resmi &le; 4 jam</span></span>
+    </li>
+  </ol>
+
+  <div class="wizard">
+    <div class="wizard-main">
+      <h1 style="font-size:25px;margin-bottom:4px">Jadwal &amp; lokasi proyek</h1>
+      <p style="font-size:13.5px;opacity:.65;max-width:56ch">Isi titik lokasi sedetail mungkin — mobilisasi lowbed dan izin masuk area kami urus dari data ini.</p>
+
+      
+      <div class="hr"></div>
+
+      <form method="POST" action="ajukan-sewa" id="form-ajukan">
+                
+        <input type="hidden" name="skema" id="skema-terpilih" value="">
+
+        
+        <fieldset class="alat-set">
+          <legend class="field-legend">Alat yang disewa</legend>
+
+          <div id="alat-daftar">
+            <div class="baris-ulang alat-baris-kepala" aria-hidden="true">
+              <span>Jenis alat</span><span>Jumlah unit</span><span></span>
+            </div>
+
+                          <div class="baris-ulang alat-baris">
+                <div class="field">
+                  <label class="sr" for="unit0">Jenis alat baris 1</label>
+                  <select class="input" id="unit0" name="unit[]" data-alat="unit" required>
+                                          <option value="komatsu-pc200-8" >Excavator Komatsu PC200-8</option>
+                                          <option value="kubota-u-35" >Excavator Mini Kubota U-35</option>
+                                          <option value="komatsu-d65e-12" >Bulldozer Komatsu D65E-12</option>
+                                          <option value="toyota-3-ton-diesel" >Forklift Toyota 3 Ton Diesel</option>
+                                          <option value="hino-fm260" >Dump Truck Hino FM260 20 m³</option>
+                                          <option value="kato-nk-250" >Mobile Crane Kato NK-250</option>
+                                          <option value="sakai-sv512" >Vibro Roller Sakai SV512</option>
+                                          <option value="soosan-sb81" >Attachment Breaker Soosan SB81</option>
+                                      </select>
+                </div>
+                <div class="field">
+                  <label class="sr" for="qty0">Jumlah unit baris 1</label>
+                  <input class="input" id="qty0" name="qty[]" data-alat="qty"
+                         type="number" min="1" max="20" value="1" required>
+                </div>
+                <button type="button" class="btn btn-secondary baris-hapus" data-alat-hapus hidden>Hapus</button>
+              </div>
+                      </div>
+
+          <template id="alat-contoh">
+            <div class="baris-ulang alat-baris">
+              <div class="field">
+                <select class="input" name="unit[]" data-alat="unit" required>
+                                      <option value="komatsu-pc200-8">Excavator Komatsu PC200-8</option>
+                                      <option value="kubota-u-35">Excavator Mini Kubota U-35</option>
+                                      <option value="komatsu-d65e-12">Bulldozer Komatsu D65E-12</option>
+                                      <option value="toyota-3-ton-diesel">Forklift Toyota 3 Ton Diesel</option>
+                                      <option value="hino-fm260">Dump Truck Hino FM260 20 m³</option>
+                                      <option value="kato-nk-250">Mobile Crane Kato NK-250</option>
+                                      <option value="sakai-sv512">Vibro Roller Sakai SV512</option>
+                                      <option value="soosan-sb81">Attachment Breaker Soosan SB81</option>
+                                  </select>
+              </div>
+              <div class="field">
+                <input class="input" name="qty[]" data-alat="qty" type="number" min="1" max="20" value="1" required>
+              </div>
+              <button type="button" class="btn btn-secondary baris-hapus" data-alat-hapus>Hapus</button>
+            </div>
+          </template>
+
+          <button type="button" class="btn btn-secondary" id="alat-tambah" hidden>+ Tambah alat</button>
+        </fieldset>
+
+        <div class="grid-3" style="margin-top:14px">
+          <div class="field"><label for="mulai">Tanggal mulai sewa</label>
+            <input class="input" id="mulai" name="mulai" type="date" value="2026-08-23" required>
+          </div>
+          <div class="field"><label for="selesai">Tanggal selesai</label>
+            <input class="input" id="selesai" name="selesai" type="date"
+                   value="2026-08-25"
+                    data-auto  required>
+          </div>
+          <div class="field"><label for="shift">Jam kerja per hari</label>
+            <select class="input" id="shift" name="shift">
+              <option value="1" selected>1 shift — 8 jam</option>
+              <option value="2" >2 shift — 16 jam (+30%)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-14" style="margin-top:14px">
+          <div class="field"><label for="proyek">Nama &amp; alamat proyek</label>
+            <input class="input" id="proyek" name="proyek" type="text" value="" placeholder="Peningkatan Jalan Deandels KM 12, Brondong, Lamongan" required>
+          </div>
+          <div class="field"><label for="area">Lokasi proyek (jarak dari pool)</label>
+            <select class="input" id="area" name="area" required>
+                              
+                <option value="lamongan" data-km="18"
+                        >Brondong, Lamongan · 18 km</option>
+                              
+                <option value="lamongan-kota" data-km="28"
+                        >Lamongan kota · 28 km</option>
+                              
+                <option value="gresik" data-km="45"
+                        >Gresik · 45 km</option>
+                              
+                <option value="tuban" data-km="90"
+                        >Tuban · 90 km</option>
+                              
+                <option value="surabaya" data-km="90"
+                        >Surabaya · 90 km</option>
+                              
+                <option value="luar" data-km="160"
+                        >Luar area — nego · 160 km</option>
+                          </select>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:14px"><label for="pekerjaan">Jenis pekerjaan</label>
+          <select class="input" id="pekerjaan" name="pekerjaan">
+            <option>Galian &amp; timbunan</option>
+            <option>Land clearing</option>
+            <option>Bongkar beton</option>
+            <option>Angkat material</option>
+          </select>
+        </div>
+
+        <div style="margin-top:18px">
+          
+                    <label class="radio"><input type="checkbox" id="operator" name="operator" value="1"
+                 checked><span class="dot"></span>Termasuk operator bersertifikat</label>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="grid-2">
+          <div class="field"><label for="pic">PIC lapangan</label><input class="input" id="pic" name="pic" type="text" value="" placeholder="Nama lengkap" required></div>
+          <div class="field"><label for="wa">Nomor WhatsApp PIC</label><input class="input" id="wa" name="wa" type="tel" inputmode="tel" value="" placeholder="08…" required></div>
+          <div class="field"><label for="perusahaan">Perusahaan / instansi</label><input class="input" id="perusahaan" name="perusahaan" type="text" value="" placeholder="CV / PT / Dinas"></div>
+          <div class="field"><label for="bayar">Skema pembayaran</label>
+            <select class="input" id="bayar" name="bayar">
+              <option>Transfer 50% di muka</option>
+              <option>Termin proyek (30 hari)</option>
+              <option>Tender pemerintah — SPK</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:14px">
+          <label for="catatan">Catatan untuk tim operasional</label>
+          <textarea class="input" id="catatan" name="catatan" style="min-height:74px" placeholder="Contoh: mohon unit tiba sebelum jam 07.00 karena jalan ditutup mulai jam 09.00."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <a href="alat-berat.html" class="btn btn-secondary">Kembali ke pilihan unit</a>
+          <button type="submit" class="btn btn-primary">Kirim pengajuan
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <aside class="aside" aria-labelledby="ringkas-hd">
+      <div class="aside-sticky" id="recap-box">
+        <div class="aside-title" id="ringkas-hd">Ringkasan sewa</div>
+
+        <div class="recap-item">
+          
+          <div id="recap-alat"><b id="recap-unit">—</b></div>
+          <div class="m" id="recap-detail">—</div>
+        </div>
+
+        <div class="sum" style="margin-top:0">
+          <div class="sum-row"><span id="recap-l-sewa">Sewa unit</span><span id="recap-sewa">—</span></div>
+          <div class="sum-row"><span id="recap-l-shift">Tambahan shift</span><span id="recap-shift">—</span></div>
+          <div class="sum-row"><span id="recap-l-op">Operator</span><span id="recap-op">—</span></div>
+          <div class="sum-row"><span id="recap-l-mob">Mobilisasi &amp; demobilisasi</span><span id="recap-mob">—</span></div>
+          <div class="sum-row"><span>Subtotal</span><span id="recap-subtotal">—</span></div>
+                      <div class="sum-row"><span id="recap-l-ppn">PPN</span><span id="recap-ppn">—</span></div>
+                    <div class="sum-total" role="status" aria-live="polite"><span>Estimasi total</span><span id="recap-total">—</span></div>
+        </div>
+
+        <p class="periode" id="recap-skema">—</p>
+
+        <div class="notice">
+          <b>Estimasi, belum mengikat</b>
+          Angka final menyesuaikan hasil survei lokasi dan ketersediaan unit pada tanggal yang diminta.
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">BUMI KONSTRUKSI</div>
+        <p class="footer-about">Penyewaan alat berat untuk proyek jalan, pelabuhan, dan tambang di Jawa Timur.</p>
+      </div>
+      <div>
+        <h4>Alat berat</h4>
+        <ul>
+          
+                      <li><a href="alat-berat-excavator.html">Excavator</a></li>
+                      <li><a href="alat-berat-bulldozer.html">Bulldozer</a></li>
+                      <li><a href="alat-berat-forklift.html">Forklift</a></li>
+                      <li><a href="alat-berat-dump-truck.html">Dump truck</a></li>
+                      <li><a href="alat-berat-attachment.html">Attachment</a></li>
+                      <li><a href="alat-berat-vibro-roller.html">Vibro roller</a></li>
+                      <li><a href="alat-berat-mobile-crane.html">Mobile crane</a></li>
+                  </ul>
+      </div>
+      <div>
+        <h4>Layanan</h4>
+        <ul>
+          <li><a href="simulasi-biaya.html">Simulasi biaya</a></li>
+          <li><a href="ajukan-sewa.html">Ajukan sewa</a></li>
+          <li><a href="kontak.html">Penawaran paket proyek</a></li>
+          <li><a href="kontak.html">Surat dukungan alat</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="tel:+6281234567890">0322-451-2200</a></li>
+          <li><a href="https://wa.me/6281234567890" rel="noopener">WhatsApp dispatch</a></li>
+          <li><a href="kontak.html">Empat pool &amp; alamat</a></li>
+          <li>Senin–Sabtu 07.00–17.00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 PT Bumi Konstruksi Nusantara</span>
+      <span>NIB · SBU · SIUJK aktif</span>
+      <span>Jl. Raya Deandels KM 12, Brondong, Lamongan 62263</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+  <script src="assets/js/pricing.js"></script>
+<script>window.Pricing.configure({"biaya":{"operatorPerHari":450000,"mobilisasiDasar":950000,"mobilisasiPerKm":25000,"mobilisasiKmGratis":30,"ppn":0.11,"ppnAktif":true,"shift2":0.3,"minHariHarian":3},"area":[{"value":"lamongan","label":"Brondong, Lamongan","km":18},{"value":"lamongan-kota","label":"Lamongan kota","km":28},{"value":"gresik","label":"Gresik","km":45},{"value":"tuban","label":"Tuban","km":90},{"value":"surabaya","label":"Surabaya","km":90},{"value":"luar","label":"Luar area \u2014 nego","km":160}],"unit":[{"key":"komatsu-pc200-8","nama":"Excavator Komatsu PC200-8","kategori":"excavator","tarif":{"h":8500000,"m":51000000,"b":175000000},"hemat":31},{"key":"kubota-u-35","nama":"Excavator Mini Kubota U-35","kategori":"excavator","tarif":{"h":2900000,"m":17400000,"b":62000000},"hemat":29},{"key":"komatsu-d65e-12","nama":"Bulldozer Komatsu D65E-12","kategori":"bulldozer","tarif":{"h":12500000,"m":75000000,"b":260000000},"hemat":31},{"key":"toyota-3-ton-diesel","nama":"Forklift Toyota 3 Ton Diesel","kategori":"forklift","tarif":{"h":1200000,"m":7200000,"b":25000000},"hemat":31},{"key":"hino-fm260","nama":"Dump Truck Hino FM260 20 m\u00b3","kategori":"dump-truck","tarif":{"h":1750000,"m":10500000,"b":37000000},"hemat":30},{"key":"kato-nk-250","nama":"Mobile Crane Kato NK-250","kategori":"mobile-crane","tarif":{"h":9800000,"m":58800000,"b":205000000},"hemat":30},{"key":"sakai-sv512","nama":"Vibro Roller Sakai SV512","kategori":"vibro-roller","tarif":{"h":3400000,"m":20400000,"b":72000000},"hemat":29},{"key":"soosan-sb81","nama":"Attachment Breaker Soosan SB81","kategori":"attachment","tarif":{"h":1200000,"m":null,"b":null},"hemat":null}]});</script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

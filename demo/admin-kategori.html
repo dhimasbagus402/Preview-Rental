@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kategori &amp; pool — Sewa Alat Berat</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body class="admin"><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi" href="index.html">Situs</a><a class="demo-sisi is-aktif" href="admin.html" aria-current="page">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+
+<header class="admin-bar">
+  <div class="admin-brand">Panel Admin<small>Rifa Andriani · Super Admin</small></div>
+  <a class="btn btn-secondary" href="index.html" target="_blank" rel="noopener">Lihat situs</a>
+  <button class="theme-toggle" type="button" aria-label="Ganti mode tampilan">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+  </button>
+  <form method="POST" action="admin/keluar" style="margin:0">
+        <button type="submit" class="btn btn-secondary">Keluar</button>
+  </form>
+</header>
+
+<nav class="admin-tabs" aria-label="Menu admin">
+  <a href="admin.html" >Dashboard</a>
+      <a href="admin-rental.html" >Rental</a>
+        <a href="admin-alat.html" >Alat</a>
+    <a href="admin-kategori.html"  aria-current="page" >Kategori &amp; pool</a>
+        <a href="admin-tarif.html" >Tarif alat</a>
+    <a href="admin-biaya.html" >Biaya &amp; pajak</a>
+        <a href="admin-pesan.html" >Pesan</a>
+        <a href="admin-perusahaan.html" >Perusahaan</a>
+        <a href="admin-pengguna.html" >Pengguna</a>
+        <a href="admin-aktivitas.html" >Aktivitas</a>
+  </nav>
+
+<main class="admin-main">
+    
+  <h1 class="admin-h1">Kategori &amp; pool</h1>
+<p class="admin-sub">
+  <strong>Pool</strong> adalah tempat unit disimpan — dipakai untuk menandai
+  posisi tiap alat, sekaligus jadi daftar cabang di
+  <a href="kontak.html" target="_blank" rel="noopener">halaman Kontak</a>
+  beserta petanya. Jumlah unitnya dihitung sendiri dari data alat, jadi tidak
+  perlu diketik.
+</p>
+<p class="admin-sub">
+  Berbeda dari <strong>area layanan</strong> di halaman
+  <a href="admin-perusahaan.html">Perusahaan</a>, yang merupakan
+  pilihan lokasi <em>proyek penyewa</em> dan menentukan biaya mobilisasi.
+</p>
+
+<h2 class="admin-h2">Pool / lokasi</h2>
+
+  <div class="admin-card">
+    <form method="POST" action="admin/pool/2">
+       <input type="hidden" name="_method" value="PUT">      <div class="unit-head">
+        <h3>Gresik</h3>
+        <span class="text-muted" style="font-size:12px">6 unit</span>
+        <span class="spacer"></span>
+                  <span class="text-muted" style="font-size:11.5px">tidak bisa dihapus — masih dipakai</span>
+              </div>
+
+      <div class="admin-grid">
+        <div class="field"><label for="pn2">Nama pool</label>
+          <input class="input" id="pn2" name="name" value="Gresik" required></div>
+        <div class="field">
+          <label for="pk2">Jarak default (km)</label>
+          <input class="input" id="pk2" name="default_distance_km" type="number" min="0" max="5000"
+                 value="45" required
+                 aria-describedby="pkket2">
+
+          
+          <div class="field-kaki">
+            <span class="suffix" id="pkket2">Tidak menentukan biaya.</span>
+
+            <details class="menu bantuan">
+              <summary><span class="tanda-tanya" aria-hidden="true">?</span>Selengkapnya</summary>
+              <div class="menu-panel panel-teks" data-rata="kiri">
+                <p><strong>Untuk apa angka ini?</strong></p>
+                <p>Perkiraan jarak dari pool <strong>Gresik</strong> ke lokasi proyek
+                   pada umumnya. Dipakai sebagai patokan internal saat menyiapkan lowbed dan
+                   memperkirakan waktu mobilisasi.</p>
+                <p><strong>Angka ini tidak menentukan biaya.</strong> Biaya mobilisasi yang
+                   ditagih ke penyewa dihitung dari jarak <em>area layanan</em> yang dipilih
+                   penyewa saat mengajukan sewa
+                   <a href="admin-perusahaan.html">(diatur di Perusahaan)</a>,
+                   bukan dari kolom ini.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="field"><label for="pt2">Telepon</label>
+          <input class="input" id="pt2" name="phone" value="031-397-8811" placeholder="0322-451-2200"></div>
+
+        <div class="field wide"><label for="pa2">Alamat</label>
+          <input class="input" id="pa2" name="address" value="Jl. Tri Dharma, Kawasan Industri Gresik"></div>
+
+        <div class="field"><label for="plat2">Lintang (latitude)</label>
+          <input class="input" id="plat2" name="latitude" value="-7.156" placeholder="-6.8746"></div>
+
+        <div class="field"><label for="plng2">Bujur (longitude)</label>
+          <input class="input" id="plng2" name="longitude" value="112.651" placeholder="112.2699">
+          <div class="field-kaki">
+            <span class="suffix">Untuk peta di halaman Kontak.</span>
+            <details class="menu bantuan">
+              <summary><span class="tanda-tanya" aria-hidden="true">?</span>Cara mengisinya</summary>
+              <div class="menu-panel panel-teks" data-rata="kiri">
+                <p><strong>Mengambil koordinat dari Google Maps</strong></p>
+                <p>Buka Google Maps, klik kanan pada titik lokasi pool, lalu klik
+                   angka yang muncul paling atas — angka itu langsung tersalin.
+                   Bentuknya <em>-6.8746, 112.2699</em>: yang pertama lintang,
+                   yang kedua bujur.</p>
+                <p>Boleh dikosongkan. Pool tanpa koordinat tetap tampil di
+                   halaman Kontak, hanya tidak ikut muncul di peta.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="aksi-row" style="margin-top:10px;gap:18px">
+        <label class="radio">
+          <input type="checkbox" name="active" value="1" checked><span class="dot"></span>
+          Tampil di situs — kalau dimatikan, unit di pool ini disembunyikan dari katalog
+        </label>
+        <label class="radio">
+          <input type="checkbox" name="is_head_office" value="1" ><span class="dot"></span>
+          Kantor pusat
+        </label>
+      </div>
+
+      <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan pool</button></div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <form method="POST" action="admin/pool/1">
+       <input type="hidden" name="_method" value="PUT">      <div class="unit-head">
+        <h3>Lamongan</h3>
+        <span class="text-muted" style="font-size:12px">12 unit</span>
+        <span class="spacer"></span>
+                  <span class="text-muted" style="font-size:11.5px">tidak bisa dihapus — masih dipakai</span>
+              </div>
+
+      <div class="admin-grid">
+        <div class="field"><label for="pn1">Nama pool</label>
+          <input class="input" id="pn1" name="name" value="Lamongan" required></div>
+        <div class="field">
+          <label for="pk1">Jarak default (km)</label>
+          <input class="input" id="pk1" name="default_distance_km" type="number" min="0" max="5000"
+                 value="18" required
+                 aria-describedby="pkket1">
+
+          
+          <div class="field-kaki">
+            <span class="suffix" id="pkket1">Tidak menentukan biaya.</span>
+
+            <details class="menu bantuan">
+              <summary><span class="tanda-tanya" aria-hidden="true">?</span>Selengkapnya</summary>
+              <div class="menu-panel panel-teks" data-rata="kiri">
+                <p><strong>Untuk apa angka ini?</strong></p>
+                <p>Perkiraan jarak dari pool <strong>Lamongan</strong> ke lokasi proyek
+                   pada umumnya. Dipakai sebagai patokan internal saat menyiapkan lowbed dan
+                   memperkirakan waktu mobilisasi.</p>
+                <p><strong>Angka ini tidak menentukan biaya.</strong> Biaya mobilisasi yang
+                   ditagih ke penyewa dihitung dari jarak <em>area layanan</em> yang dipilih
+                   penyewa saat mengajukan sewa
+                   <a href="admin-perusahaan.html">(diatur di Perusahaan)</a>,
+                   bukan dari kolom ini.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="field"><label for="pt1">Telepon</label>
+          <input class="input" id="pt1" name="phone" value="0322-451-2200" placeholder="0322-451-2200"></div>
+
+        <div class="field wide"><label for="pa1">Alamat</label>
+          <input class="input" id="pa1" name="address" value="Jl. Raya Deandels KM 12, Brondong, Lamongan 62263"></div>
+
+        <div class="field"><label for="plat1">Lintang (latitude)</label>
+          <input class="input" id="plat1" name="latitude" value="-6.878" placeholder="-6.8746"></div>
+
+        <div class="field"><label for="plng1">Bujur (longitude)</label>
+          <input class="input" id="plng1" name="longitude" value="112.273" placeholder="112.2699">
+          <div class="field-kaki">
+            <span class="suffix">Untuk peta di halaman Kontak.</span>
+            <details class="menu bantuan">
+              <summary><span class="tanda-tanya" aria-hidden="true">?</span>Cara mengisinya</summary>
+              <div class="menu-panel panel-teks" data-rata="kiri">
+                <p><strong>Mengambil koordinat dari Google Maps</strong></p>
+                <p>Buka Google Maps, klik kanan pada titik lokasi pool, lalu klik
+                   angka yang muncul paling atas — angka itu langsung tersalin.
+                   Bentuknya <em>-6.8746, 112.2699</em>: yang pertama lintang,
+                   yang kedua bujur.</p>
+                <p>Boleh dikosongkan. Pool tanpa koordinat tetap tampil di
+                   halaman Kontak, hanya tidak ikut muncul di peta.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="aksi-row" style="margin-top:10px;gap:18px">
+        <label class="radio">
+          <input type="checkbox" name="active" value="1" checked><span class="dot"></span>
+          Tampil di situs — kalau dimatikan, unit di pool ini disembunyikan dari katalog
+        </label>
+        <label class="radio">
+          <input type="checkbox" name="is_head_office" value="1" checked><span class="dot"></span>
+          Kantor pusat
+        </label>
+      </div>
+
+      <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan pool</button></div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <form method="POST" action="admin/pool/4">
+       <input type="hidden" name="_method" value="PUT">      <div class="unit-head">
+        <h3>Surabaya</h3>
+        <span class="text-muted" style="font-size:12px">9 unit</span>
+        <span class="spacer"></span>
+                  <span class="text-muted" style="font-size:11.5px">tidak bisa dihapus — masih dipakai</span>
+              </div>
+
+      <div class="admin-grid">
+        <div class="field"><label for="pn4">Nama pool</label>
+          <input class="input" id="pn4" name="name" value="Surabaya" required></div>
+        <div class="field">
+          <label for="pk4">Jarak default (km)</label>
+          <input class="input" id="pk4" name="default_distance_km" type="number" min="0" max="5000"
+                 value="90" required
+                 aria-describedby="pkket4">
+
+          
+          <div class="field-kaki">
+            <span class="suffix" id="pkket4">Tidak menentukan biaya.</span>
+
+            <details class="menu bantuan">
+              <summary><span class="tanda-tanya" aria-hidden="true">?</span>Selengkapnya</summary>
+              <div class="menu-panel panel-teks" data-rata="kiri">
+                <p><strong>Untuk apa angka ini?</strong></p>
+                <p>Perkiraan jarak dari pool <strong>Surabaya</strong> ke lokasi proyek
+                   pada umumnya. Dipakai sebagai patokan internal saat menyiapkan lowbed dan
+                   memperkirakan waktu mobilisasi.</p>
+                <p><strong>Angka ini tidak menentukan biaya.</strong> Biaya mobilisasi yang
+                   ditagih ke penyewa dihitung dari jarak <em>area layanan</em> yang dipilih
+                   penyewa saat mengajukan sewa
+                   <a href="admin-perusahaan.html">(diatur di Perusahaan)</a>,
+                   bukan dari kolom ini.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="field"><label for="pt4">Telepon</label>
+          <input class="input" id="pt4" name="phone" value="031-748-6600" placeholder="0322-451-2200"></div>
+
+        <div class="field wide"><label for="pa4">Alamat</label>
+          <input class="input" id="pa4" name="address" value="Jl. Kalianak 55, Asemrowo, Surabaya"></div>
+
+        <div class="field"><label for="plat4">Lintang (latitude)</label>
+          <input class="input" id="plat4" name="latitude" value="-7.24" placeholder="-6.8746"></div>
+
+        <div class="field"><label for="plng4">Bujur (longitude)</label>
+          <input class="input" id="plng4" name="longitude" value="112.7" placeholder="112.2699">
+          <div class="field-kaki">
+            <span class="suffix">Untuk peta di halaman Kontak.</span>
+            <details class="menu bantuan">
+              <summary><span class="tanda-tanya" aria-hidden="true">?</span>Cara mengisinya</summary>
+              <div class="menu-panel panel-teks" data-rata="kiri">
+                <p><strong>Mengambil koordinat dari Google Maps</strong></p>
+                <p>Buka Google Maps, klik kanan pada titik lokasi pool, lalu klik
+                   angka yang muncul paling atas — angka itu langsung tersalin.
+                   Bentuknya <em>-6.8746, 112.2699</em>: yang pertama lintang,
+                   yang kedua bujur.</p>
+                <p>Boleh dikosongkan. Pool tanpa koordinat tetap tampil di
+                   halaman Kontak, hanya tidak ikut muncul di peta.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="aksi-row" style="margin-top:10px;gap:18px">
+        <label class="radio">
+          <input type="checkbox" name="active" value="1" checked><span class="dot"></span>
+          Tampil di situs — kalau dimatikan, unit di pool ini disembunyikan dari katalog
+        </label>
+        <label class="radio">
+          <input type="checkbox" name="is_head_office" value="1" ><span class="dot"></span>
+          Kantor pusat
+        </label>
+      </div>
+
+      <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan pool</button></div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <form method="POST" action="admin/pool/3">
+       <input type="hidden" name="_method" value="PUT">      <div class="unit-head">
+        <h3>Tuban</h3>
+        <span class="text-muted" style="font-size:12px">3 unit</span>
+        <span class="spacer"></span>
+                  <span class="text-muted" style="font-size:11.5px">tidak bisa dihapus — masih dipakai</span>
+              </div>
+
+      <div class="admin-grid">
+        <div class="field"><label for="pn3">Nama pool</label>
+          <input class="input" id="pn3" name="name" value="Tuban" required></div>
+        <div class="field">
+          <label for="pk3">Jarak default (km)</label>
+          <input class="input" id="pk3" name="default_distance_km" type="number" min="0" max="5000"
+                 value="90" required
+                 aria-describedby="pkket3">
+
+          
+          <div class="field-kaki">
+            <span class="suffix" id="pkket3">Tidak menentukan biaya.</span>
+
+            <details class="menu bantuan">
+              <summary><span class="tanda-tanya" aria-hidden="true">?</span>Selengkapnya</summary>
+              <div class="menu-panel panel-teks" data-rata="kiri">
+                <p><strong>Untuk apa angka ini?</strong></p>
+                <p>Perkiraan jarak dari pool <strong>Tuban</strong> ke lokasi proyek
+                   pada umumnya. Dipakai sebagai patokan internal saat menyiapkan lowbed dan
+                   memperkirakan waktu mobilisasi.</p>
+                <p><strong>Angka ini tidak menentukan biaya.</strong> Biaya mobilisasi yang
+                   ditagih ke penyewa dihitung dari jarak <em>area layanan</em> yang dipilih
+                   penyewa saat mengajukan sewa
+                   <a href="admin-perusahaan.html">(diatur di Perusahaan)</a>,
+                   bukan dari kolom ini.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="field"><label for="pt3">Telepon</label>
+          <input class="input" id="pt3" name="phone" value="0356-711-940" placeholder="0322-451-2200"></div>
+
+        <div class="field wide"><label for="pa3">Alamat</label>
+          <input class="input" id="pa3" name="address" value="Jl. Raya Semarang KM 6, Jenu, Tuban"></div>
+
+        <div class="field"><label for="plat3">Lintang (latitude)</label>
+          <input class="input" id="plat3" name="latitude" value="-6.867" placeholder="-6.8746"></div>
+
+        <div class="field"><label for="plng3">Bujur (longitude)</label>
+          <input class="input" id="plng3" name="longitude" value="112.01" placeholder="112.2699">
+          <div class="field-kaki">
+            <span class="suffix">Untuk peta di halaman Kontak.</span>
+            <details class="menu bantuan">
+              <summary><span class="tanda-tanya" aria-hidden="true">?</span>Cara mengisinya</summary>
+              <div class="menu-panel panel-teks" data-rata="kiri">
+                <p><strong>Mengambil koordinat dari Google Maps</strong></p>
+                <p>Buka Google Maps, klik kanan pada titik lokasi pool, lalu klik
+                   angka yang muncul paling atas — angka itu langsung tersalin.
+                   Bentuknya <em>-6.8746, 112.2699</em>: yang pertama lintang,
+                   yang kedua bujur.</p>
+                <p>Boleh dikosongkan. Pool tanpa koordinat tetap tampil di
+                   halaman Kontak, hanya tidak ikut muncul di peta.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="aksi-row" style="margin-top:10px;gap:18px">
+        <label class="radio">
+          <input type="checkbox" name="active" value="1" checked><span class="dot"></span>
+          Tampil di situs — kalau dimatikan, unit di pool ini disembunyikan dari katalog
+        </label>
+        <label class="radio">
+          <input type="checkbox" name="is_head_office" value="1" ><span class="dot"></span>
+          Kantor pusat
+        </label>
+      </div>
+
+      <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan pool</button></div>
+    </form>
+
+      </div>
+
+<div class="admin-card">
+  <h3>Tambah pool</h3>
+  <form method="POST" action="admin/pool">
+        <div class="admin-grid">
+      <div class="field"><label for="lnama">Nama pool</label>
+        <input class="input" id="lnama" name="name" placeholder="mis. Bojonegoro" required></div>
+      <div class="field"><label for="lkm">Jarak default (km)</label>
+        <input class="input" id="lkm" name="default_distance_km" type="number" min="0" value="0" required
+               aria-describedby="lkmket">
+        <span class="suffix" id="lkmket">Patokan internal; tidak memengaruhi biaya mobilisasi.</span></div>
+      <div class="field"><label for="ltelepon">Telepon</label>
+        <input class="input" id="ltelepon" name="phone" placeholder="0322-451-2200"></div>
+      <div class="field wide"><label for="lalamat">Alamat</label>
+        <input class="input" id="lalamat" name="address"></div>
+      <div class="field"><label for="llat">Lintang (latitude)</label>
+        <input class="input" id="llat" name="latitude" placeholder="-6.8746"></div>
+      <div class="field"><label for="llng">Bujur (longitude)</label>
+        <input class="input" id="llng" name="longitude" placeholder="112.2699"></div>
+    </div>
+    <div class="admin-actions"><button class="btn btn-primary" type="submit">Tambah pool</button></div>
+  </form>
+</div>
+
+<h2 class="admin-h2">Kategori alat</h2>
+<p class="admin-sub">Kategori yang tidak dicentang <strong>Tampil</strong> akan menyembunyikan
+  seluruh unit di dalamnya dari katalog situs — datanya tetap utuh.</p>
+
+<div class="admin-card">
+      <form method="POST" action="admin/kategori/7"
+          class="baris-inline  has-garis ">
+       <input type="hidden" name="_method" value="PUT">      <div class="field" style="flex:1;min-width:180px">
+        <label for="kn7" class="sr">Nama kategori</label>
+        <input class="input" id="kn7" name="name" value="Attachment" required>
+      </div>
+      <span class="text-muted" style="font-size:12px;white-space:nowrap">3 unit</span>
+      <label class="radio" style="white-space:nowrap">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Tampil
+      </label>
+      <button class="btn btn-secondary" type="submit" style="padding:7px 14px">Simpan</button>
+          </form>
+          <form method="POST" action="admin/kategori/2"
+          class="baris-inline  has-garis ">
+       <input type="hidden" name="_method" value="PUT">      <div class="field" style="flex:1;min-width:180px">
+        <label for="kn2" class="sr">Nama kategori</label>
+        <input class="input" id="kn2" name="name" value="Bulldozer" required>
+      </div>
+      <span class="text-muted" style="font-size:12px;white-space:nowrap">3 unit</span>
+      <label class="radio" style="white-space:nowrap">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Tampil
+      </label>
+      <button class="btn btn-secondary" type="submit" style="padding:7px 14px">Simpan</button>
+          </form>
+          <form method="POST" action="admin/kategori/5"
+          class="baris-inline  has-garis ">
+       <input type="hidden" name="_method" value="PUT">      <div class="field" style="flex:1;min-width:180px">
+        <label for="kn5" class="sr">Nama kategori</label>
+        <input class="input" id="kn5" name="name" value="Dump truck" required>
+      </div>
+      <span class="text-muted" style="font-size:12px;white-space:nowrap">5 unit</span>
+      <label class="radio" style="white-space:nowrap">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Tampil
+      </label>
+      <button class="btn btn-secondary" type="submit" style="padding:7px 14px">Simpan</button>
+          </form>
+          <form method="POST" action="admin/kategori/1"
+          class="baris-inline  has-garis ">
+       <input type="hidden" name="_method" value="PUT">      <div class="field" style="flex:1;min-width:180px">
+        <label for="kn1" class="sr">Nama kategori</label>
+        <input class="input" id="kn1" name="name" value="Excavator" required>
+      </div>
+      <span class="text-muted" style="font-size:12px;white-space:nowrap">10 unit</span>
+      <label class="radio" style="white-space:nowrap">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Tampil
+      </label>
+      <button class="btn btn-secondary" type="submit" style="padding:7px 14px">Simpan</button>
+          </form>
+          <form method="POST" action="admin/kategori/6"
+          class="baris-inline  has-garis ">
+       <input type="hidden" name="_method" value="PUT">      <div class="field" style="flex:1;min-width:180px">
+        <label for="kn6" class="sr">Nama kategori</label>
+        <input class="input" id="kn6" name="name" value="Forklift" required>
+      </div>
+      <span class="text-muted" style="font-size:12px;white-space:nowrap">4 unit</span>
+      <label class="radio" style="white-space:nowrap">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Tampil
+      </label>
+      <button class="btn btn-secondary" type="submit" style="padding:7px 14px">Simpan</button>
+          </form>
+          <form method="POST" action="admin/kategori/3"
+          class="baris-inline  has-garis ">
+       <input type="hidden" name="_method" value="PUT">      <div class="field" style="flex:1;min-width:180px">
+        <label for="kn3" class="sr">Nama kategori</label>
+        <input class="input" id="kn3" name="name" value="Mobile crane" required>
+      </div>
+      <span class="text-muted" style="font-size:12px;white-space:nowrap">2 unit</span>
+      <label class="radio" style="white-space:nowrap">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Tampil
+      </label>
+      <button class="btn btn-secondary" type="submit" style="padding:7px 14px">Simpan</button>
+          </form>
+          <form method="POST" action="admin/kategori/4"
+          class="baris-inline ">
+       <input type="hidden" name="_method" value="PUT">      <div class="field" style="flex:1;min-width:180px">
+        <label for="kn4" class="sr">Nama kategori</label>
+        <input class="input" id="kn4" name="name" value="Vibro roller" required>
+      </div>
+      <span class="text-muted" style="font-size:12px;white-space:nowrap">3 unit</span>
+      <label class="radio" style="white-space:nowrap">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Tampil
+      </label>
+      <button class="btn btn-secondary" type="submit" style="padding:7px 14px">Simpan</button>
+          </form>
+      
+  <form method="POST" action="admin/kategori" class="baris-inline" style="margin-top:14px">
+        <div class="field" style="flex:1;min-width:180px">
+      <label for="knama">Kategori baru</label>
+      <input class="input" id="knama" name="name" placeholder="mis. Wheel Loader" required>
+    </div>
+    <button class="btn btn-primary" type="submit" style="padding:7px 14px">Tambah</button>
+  </form>
+</div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/admin-format.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>

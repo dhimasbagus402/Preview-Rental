@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pengguna — Sewa Alat Berat</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body class="admin"><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi" href="index.html">Situs</a><a class="demo-sisi is-aktif" href="admin.html" aria-current="page">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+
+<header class="admin-bar">
+  <div class="admin-brand">Panel Admin<small>Rifa Andriani · Super Admin</small></div>
+  <a class="btn btn-secondary" href="index.html" target="_blank" rel="noopener">Lihat situs</a>
+  <button class="theme-toggle" type="button" aria-label="Ganti mode tampilan">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+  </button>
+  <form method="POST" action="admin/keluar" style="margin:0">
+        <button type="submit" class="btn btn-secondary">Keluar</button>
+  </form>
+</header>
+
+<nav class="admin-tabs" aria-label="Menu admin">
+  <a href="admin.html" >Dashboard</a>
+      <a href="admin-rental.html" >Rental</a>
+        <a href="admin-alat.html" >Alat</a>
+    <a href="admin-kategori.html" >Kategori &amp; pool</a>
+        <a href="admin-tarif.html" >Tarif alat</a>
+    <a href="admin-biaya.html" >Biaya &amp; pajak</a>
+        <a href="admin-pesan.html" >Pesan</a>
+        <a href="admin-perusahaan.html" >Perusahaan</a>
+        <a href="admin-pengguna.html"  aria-current="page" >Pengguna</a>
+        <a href="admin-aktivitas.html" >Aktivitas</a>
+  </nav>
+
+<main class="admin-main">
+    
+  <h1 class="admin-h1">Pengguna</h1>
+<p class="admin-sub">Izin diperiksa per capability, jadi menambah peran baru tidak berarti mengubah kode di banyak tempat.</p>
+
+<div class="admin-card">
+  <h3>Peran yang tersedia</h3>
+  <table class="table">
+    <thead><tr><th>Peran</th><th>Bisa apa</th></tr></thead>
+    <tbody>
+              <tr><td style="font-weight:600;white-space:nowrap">Super Admin</td><td>Seluruh sistem, termasuk mengelola pengguna.</td></tr>
+              <tr><td style="font-weight:600;white-space:nowrap">Admin</td><td>Alat, tarif, rental, dan isi situs. Tidak bisa mengelola pengguna.</td></tr>
+              <tr><td style="font-weight:600;white-space:nowrap">Sales</td><td>Rental dan pesan masuk. Tidak bisa mengubah tarif.</td></tr>
+              <tr><td style="font-weight:600;white-space:nowrap">Operasional</td><td>Status alat dan rental berjalan. Tidak bisa mengubah tarif.</td></tr>
+          </tbody>
+  </table>
+</div>
+
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Bagus Setiawan</h3>
+      <span class="text-muted" style="font-size:12.5px">operasional@contoh.test</span>
+      <span class="spacer"></span>
+      <span class="badge badge-confirmed">aktif</span>
+    </div>
+    <form method="POST" action="admin/pengguna/2">
+       <input type="hidden" name="_method" value="PUT">      <div class="admin-grid">
+        <div class="field"><label for="n2">Nama</label>
+          <input class="input" id="n2" name="name" value="Bagus Setiawan" required></div>
+        <div class="field"><label for="r2">Peran</label>
+          <select class="input" id="r2" name="role">
+            <option value="super_admin" >Super Admin</option><option value="admin" >Admin</option><option value="sales" >Sales</option><option value="operation" selected>Operasional</option>          </select></div>
+        <div class="field"><label for="p2">Kata sandi baru</label>
+          <input class="input" id="p2" name="password" type="password" placeholder="kosongkan bila tidak diganti"></div>
+      </div>
+      <label class="radio" style="margin-top:10px">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Akun aktif
+      </label>
+      <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan</button></div>
+    </form>
+  </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Nadia Rahmawati</h3>
+      <span class="text-muted" style="font-size:12.5px">sales@contoh.test</span>
+      <span class="spacer"></span>
+      <span class="badge badge-confirmed">aktif</span>
+    </div>
+    <form method="POST" action="admin/pengguna/3">
+       <input type="hidden" name="_method" value="PUT">      <div class="admin-grid">
+        <div class="field"><label for="n3">Nama</label>
+          <input class="input" id="n3" name="name" value="Nadia Rahmawati" required></div>
+        <div class="field"><label for="r3">Peran</label>
+          <select class="input" id="r3" name="role">
+            <option value="super_admin" >Super Admin</option><option value="admin" >Admin</option><option value="sales" selected>Sales</option><option value="operation" >Operasional</option>          </select></div>
+        <div class="field"><label for="p3">Kata sandi baru</label>
+          <input class="input" id="p3" name="password" type="password" placeholder="kosongkan bila tidak diganti"></div>
+      </div>
+      <label class="radio" style="margin-top:10px">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Akun aktif
+      </label>
+      <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan</button></div>
+    </form>
+  </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Rifa Andriani</h3>
+      <span class="text-muted" style="font-size:12.5px">demo@contoh.test</span>
+      <span class="spacer"></span>
+      <span class="badge badge-confirmed">aktif</span>
+    </div>
+    <form method="POST" action="admin/pengguna/1">
+       <input type="hidden" name="_method" value="PUT">      <div class="admin-grid">
+        <div class="field"><label for="n1">Nama</label>
+          <input class="input" id="n1" name="name" value="Rifa Andriani" required></div>
+        <div class="field"><label for="r1">Peran</label>
+          <select class="input" id="r1" name="role">
+            <option value="super_admin" selected>Super Admin</option><option value="admin" >Admin</option><option value="sales" >Sales</option><option value="operation" >Operasional</option>          </select></div>
+        <div class="field"><label for="p1">Kata sandi baru</label>
+          <input class="input" id="p1" name="password" type="password" placeholder="kosongkan bila tidak diganti"></div>
+      </div>
+      <label class="radio" style="margin-top:10px">
+        <input type="checkbox" name="active" value="1" checked><span class="dot"></span>Akun aktif
+      </label>
+      <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan</button></div>
+    </form>
+  </div>
+
+<div class="admin-card">
+  <h3>Tambah pengguna</h3>
+  <form method="POST" action="admin/pengguna">
+        <div class="admin-grid">
+      <div class="field"><label for="un">Nama</label><input class="input" id="un" name="name" required></div>
+      <div class="field"><label for="ue">Email</label><input class="input" id="ue" name="email" type="email" required></div>
+      <div class="field"><label for="ur">Peran</label>
+        <select class="input" id="ur" name="role">
+          <option value="super_admin">Super Admin</option><option value="admin">Admin</option><option value="sales">Sales</option><option value="operation">Operasional</option>        </select></div>
+      <div class="field"><label for="up">Kata sandi</label>
+        <input class="input" id="up" name="password" type="password" required>
+        <span class="suffix">Minimal 8 karakter.</span></div>
+    </div>
+    <div class="admin-actions"><button class="btn btn-primary" type="submit">Tambah pengguna</button></div>
+  </form>
+</div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/admin-format.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>

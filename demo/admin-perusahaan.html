@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perusahaan — Sewa Alat Berat</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body class="admin"><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi" href="index.html">Situs</a><a class="demo-sisi is-aktif" href="admin.html" aria-current="page">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+
+<header class="admin-bar">
+  <div class="admin-brand">Panel Admin<small>Rifa Andriani · Super Admin</small></div>
+  <a class="btn btn-secondary" href="index.html" target="_blank" rel="noopener">Lihat situs</a>
+  <button class="theme-toggle" type="button" aria-label="Ganti mode tampilan">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+  </button>
+  <form method="POST" action="admin/keluar" style="margin:0">
+        <button type="submit" class="btn btn-secondary">Keluar</button>
+  </form>
+</header>
+
+<nav class="admin-tabs" aria-label="Menu admin">
+  <a href="admin.html" >Dashboard</a>
+      <a href="admin-rental.html" >Rental</a>
+        <a href="admin-alat.html" >Alat</a>
+    <a href="admin-kategori.html" >Kategori &amp; pool</a>
+        <a href="admin-tarif.html" >Tarif alat</a>
+    <a href="admin-biaya.html" >Biaya &amp; pajak</a>
+        <a href="admin-pesan.html" >Pesan</a>
+        <a href="admin-perusahaan.html"  aria-current="page" >Perusahaan</a>
+        <a href="admin-pengguna.html" >Pengguna</a>
+        <a href="admin-aktivitas.html" >Aktivitas</a>
+  </nav>
+
+<main class="admin-main">
+    
+  <h1 class="admin-h1">Identitas perusahaan</h1>
+<p class="admin-sub">Dipakai di navigasi, footer, hotline, dan angka di beranda.</p>
+
+<form method="POST" action="admin/perusahaan">
+    <div class="admin-card">
+    <div class="admin-grid">
+      <div class="field"><label for="nama">Nama perusahaan</label>
+        <input class="input" id="nama" name="nama" value="PT Bumi Konstruksi Nusantara" required></div>
+      <div class="field"><label for="namaNav">Nama di navigasi</label>
+        <input class="input" id="namaNav" name="namaNav" value="BUMI KONSTRUKSI" required></div>
+      <div class="field"><label for="telepon">Telepon</label>
+        <input class="input" id="telepon" name="telepon" value="0322-451-2200" required></div>
+      <div class="field"><label for="whatsapp">WhatsApp</label>
+        <input class="input" id="whatsapp" name="whatsapp" value="6281234567890" required>
+        <span class="suffix">Angka saja dengan kode negara, contoh 6281234567890.</span></div>
+      <div class="field wide"><label for="alamat">Alamat kantor pusat</label>
+        <input class="input" id="alamat" name="alamat" value="Jl. Raya Deandels KM 12, Brondong, Lamongan 62263"></div>
+      <div class="field wide"><label for="deskripsi">Deskripsi singkat (footer)</label>
+        <textarea class="input" id="deskripsi" name="deskripsi" style="min-height:70px">Penyewaan alat berat untuk proyek jalan, pelabuhan, dan tambang di Jawa Timur.</textarea></div>
+      <div class="field"><label for="jam">Jam operasional</label>
+        <input class="input" id="jam" name="jamOperasional" value="Senin–Sabtu 07.00–17.00"></div>
+      <div class="field"><label for="dispatch">Catatan dispatch</label>
+        <input class="input" id="dispatch" name="dispatch" value="Dispatch darurat 24 jam"></div>
+      <div class="field"><label for="legalitas">Legalitas</label>
+        <input class="input" id="legalitas" name="legalitas" value="NIB · SBU · SIUJK aktif"></div>
+      <div class="field"><label for="tahun">Tahun berdiri</label>
+        <input class="input" id="tahun" name="tahunBerdiri" value="2009"></div>
+      <div class="field"><label for="proyek">Jumlah proyek</label>
+        <input class="input" id="proyek" name="jumlahProyek" value="310+"></div>
+      <div class="field"><label for="garansi">Garansi penggantian</label>
+        <input class="input" id="garansi" name="garansi" value="12 jam"></div>
+    </div>
+    <p class="admin-note">Jumlah unit armada dihitung otomatis dari data alat, jadi tidak diisi di sini.</p>
+  </div>
+
+  <div class="admin-card">
+    <h3>Pita "situs contoh"</h3>
+    <p class="admin-note" style="margin-top:0">
+      Pita di paling atas setiap halaman publik, yang menyatakan bahwa isi situs
+      ini masih data karangan. <strong>Matikan begitu nama, alamat, nomor
+      telepon, dan tarifnya sudah diganti data asli</strong> — membiarkannya
+      menyala pada situs sungguhan membuat penawaran Anda sendiri terlihat tidak
+      serius.
+    </p>
+
+    <label class="radio">
+      <input type="checkbox" name="demoAktif" value="1"
+             checked><span class="dot"></span>
+      Tampilkan pita di situs
+    </label>
+
+    <div class="field" style="margin-top:12px">
+      <label for="demoTeks">Kalimatnya</label>
+      <input class="input" id="demoTeks" name="demoTeks"
+             value="Situs contoh. Nama perusahaan, alamat, nomor telepon, titik peta, dan seluruh tarif di sini adalah data karangan untuk keperluan demonstrasi.">
+      <span class="suffix">Dikosongkan berarti pita tidak tampil, apa pun status centangnya.</span>
+    </div>
+  </div>
+
+  <div class="admin-actions">
+    <button class="btn btn-primary" type="submit">Simpan</button>
+  </div>
+</form>
+
+<h2 class="admin-h2">Notifikasi WhatsApp</h2>
+<p class="admin-sub">
+  Setelah pengunjung mengirim pengajuan, halaman konfirmasinya menawarkan
+  tombol WhatsApp berisi rincian lengkap pengajuan itu — sama dengan yang
+  tampil di halaman rental panel ini. Pengajuannya sendiri <strong>sudah masuk
+  ke panel</strong> begitu dikirim, terlepas dari WhatsApp.
+</p>
+
+<form method="POST" action="admin/notifikasi">
+    <div class="admin-card">
+    <div class="admin-grid">
+      <div class="field">
+        <label for="waPengajuan">Nomor penerima pengajuan</label>
+        <input class="input" id="waPengajuan" name="waPengajuan" value=""
+               placeholder="6281234567890">
+        <span class="suffix">
+          Kosongkan untuk memakai nomor WhatsApp perusahaan
+          (6281234567890). Angka saja dengan kode negara.
+        </span>
+      </div>
+    </div>
+
+    <label class="radio" style="margin-top:12px">
+      <input type="checkbox" name="waOtomatis" value="1" checked><span class="dot"></span>
+      Buka WhatsApp otomatis setelah pengajuan terkirim
+    </label>
+    <p class="admin-note">
+      Kalau dimatikan, tombolnya tetap ada tapi pengunjung yang menekannya sendiri.
+      Beri jeda 3 detik dan bisa dibatalkan, supaya nomor pengajuannya sempat terbaca.
+    </p>
+
+    <div class="kotak-rumus" style="margin:14px 0 0">
+      <strong>Catatan soal pengiriman otomatis</strong>
+      <p style="margin:6px 0 0">
+        Cara ini membuka WhatsApp milik <em>pengunjung</em> dengan pesan yang
+        sudah terisi penuh — tekan kirim sekali dan rinciannya sampai ke nomor
+        Anda. Pengiriman yang benar-benar tanpa sentuhan sama sekali
+        memerlukan WhatsApp Business API: butuh akun bisnis terverifikasi,
+        penyedia layanan, dan biaya per pesan. Struktur kodenya sudah
+        dipisahkan (<code>RentalWhatsApp</code> hanya menyusun teks), jadi API
+        bisa dipasang nanti tanpa mengubah format pesan.
+      </p>
+    </div>
+  </div>
+  <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan notifikasi</button></div>
+</form>
+
+<h2 class="admin-h2">Area &amp; jarak mobilisasi</h2>
+<p class="admin-sub">
+  Daftar ini menjadi pilihan <strong>&ldquo;Lokasi proyek&rdquo;</strong> di kotak
+  sewa dan di formulir pengajuan. Jarak yang dipilih penyewa dipakai untuk
+  menghitung biaya mobilisasi.
+</p>
+
+<form method="POST" action="admin/area">
+    <div class="admin-card">
+    <div class="kotak-rumus">
+      <strong>Cara jarak dipakai</strong>
+      <p style="margin:6px 0 0">
+        Mobilisasi = (tarif dasar + kelebihan km &times; tarif per km) &times; 2 (pulang-pergi),
+        dan dihitung dua rit bila menyewa lebih dari 2 unit.
+      </p>
+      <p style="margin:6px 0 0">
+        Dengan angka sekarang: dasar <strong>950.000</strong>
+        sudah mencakup <strong>30 km</strong> pertama,
+        selebihnya <strong>25.000</strong> per km.
+        Contoh 90 km untuk 1 unit &rarr;
+        <strong>4.900.000</strong>.
+        Angka dasarnya diatur di <a href="admin-biaya.html">Biaya &amp; pajak</a>.
+      </p>
+    </div>
+
+    <div class="baris-ulang-kepala">
+      <span>Nama area</span>
+      <span>Jarak dari pool (km)</span>
+    </div>
+
+          <div class="baris-ulang">
+        <div class="field">
+          <label for="area-l0" class="sr">Nama area baris 1</label>
+          <input class="input" id="area-l0" name="area[0][label]"
+                 value="Brondong, Lamongan" placeholder="Nama area, mis. Gresik">
+        </div>
+        <div class="field">
+          <label for="area-k0" class="sr">Jarak baris 1</label>
+          <input class="input" id="area-k0" name="area[0][km]" type="number"
+                 min="0" value="18" placeholder="km">
+        </div>
+      </div>
+          <div class="baris-ulang">
+        <div class="field">
+          <label for="area-l1" class="sr">Nama area baris 2</label>
+          <input class="input" id="area-l1" name="area[1][label]"
+                 value="Lamongan kota" placeholder="Nama area, mis. Gresik">
+        </div>
+        <div class="field">
+          <label for="area-k1" class="sr">Jarak baris 2</label>
+          <input class="input" id="area-k1" name="area[1][km]" type="number"
+                 min="0" value="28" placeholder="km">
+        </div>
+      </div>
+          <div class="baris-ulang">
+        <div class="field">
+          <label for="area-l2" class="sr">Nama area baris 3</label>
+          <input class="input" id="area-l2" name="area[2][label]"
+                 value="Gresik" placeholder="Nama area, mis. Gresik">
+        </div>
+        <div class="field">
+          <label for="area-k2" class="sr">Jarak baris 3</label>
+          <input class="input" id="area-k2" name="area[2][km]" type="number"
+                 min="0" value="45" placeholder="km">
+        </div>
+      </div>
+          <div class="baris-ulang">
+        <div class="field">
+          <label for="area-l3" class="sr">Nama area baris 4</label>
+          <input class="input" id="area-l3" name="area[3][label]"
+                 value="Tuban" placeholder="Nama area, mis. Gresik">
+        </div>
+        <div class="field">
+          <label for="area-k3" class="sr">Jarak baris 4</label>
+          <input class="input" id="area-k3" name="area[3][km]" type="number"
+                 min="0" value="90" placeholder="km">
+        </div>
+      </div>
+          <div class="baris-ulang">
+        <div class="field">
+          <label for="area-l4" class="sr">Nama area baris 5</label>
+          <input class="input" id="area-l4" name="area[4][label]"
+                 value="Surabaya" placeholder="Nama area, mis. Gresik">
+        </div>
+        <div class="field">
+          <label for="area-k4" class="sr">Jarak baris 5</label>
+          <input class="input" id="area-k4" name="area[4][km]" type="number"
+                 min="0" value="90" placeholder="km">
+        </div>
+      </div>
+          <div class="baris-ulang">
+        <div class="field">
+          <label for="area-l5" class="sr">Nama area baris 6</label>
+          <input class="input" id="area-l5" name="area[5][label]"
+                 value="Luar area — nego" placeholder="Nama area, mis. Gresik">
+        </div>
+        <div class="field">
+          <label for="area-k5" class="sr">Jarak baris 6</label>
+          <input class="input" id="area-k5" name="area[5][km]" type="number"
+                 min="0" value="160" placeholder="km">
+        </div>
+      </div>
+          <div class="baris-ulang">
+        <div class="field">
+          <label for="area-l6" class="sr">Nama area baris 7</label>
+          <input class="input" id="area-l6" name="area[6][label]"
+                 value="" placeholder="Nama area, mis. Gresik">
+        </div>
+        <div class="field">
+          <label for="area-k6" class="sr">Jarak baris 7</label>
+          <input class="input" id="area-k6" name="area[6][km]" type="number"
+                 min="0" value="0" placeholder="km">
+        </div>
+      </div>
+    
+    <p class="admin-note">Baris dengan nama kosong diabaikan. Menghapus area yang sedang dipakai rental lama tidak mengubah rental itu — jaraknya sudah tersimpan sebagai biaya.</p>
+  </div>
+  <div class="admin-actions"><button class="btn btn-primary" type="submit">Simpan area</button></div>
+</form>
+
+<h2 class="admin-h2">Cabang &amp; pool</h2>
+<div class="admin-card">
+  <p class="admin-note" style="margin:0">
+    Daftar cabang di halaman Kontak sekarang diambil langsung dari
+    <a href="admin-kategori.html">Kategori &amp; pool</a> —
+    satu pool, satu cabang. Alamat, telepon, koordinat peta, dan penanda kantor
+    pusat diatur di sana, dan jumlah unitnya dihitung sendiri dari data alat.
+  </p>
+  <p class="admin-note">
+    Sebelumnya daftar ini diketik terpisah di halaman ini, termasuk jumlah
+    unitnya. Dua daftar untuk benda yang sama berarti pasti ada saatnya
+    keduanya berbeda — dan yang salah justru yang dibaca calon penyewa.
+  </p>
+</div>
+
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/admin-format.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>

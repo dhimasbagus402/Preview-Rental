@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R-2026-00004 — Sewa Alat Berat</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body class="admin"><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi" href="index.html">Situs</a><a class="demo-sisi is-aktif" href="admin.html" aria-current="page">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+
+<header class="admin-bar">
+  <div class="admin-brand">Panel Admin<small>Rifa Andriani · Super Admin</small></div>
+  <a class="btn btn-secondary" href="index.html" target="_blank" rel="noopener">Lihat situs</a>
+  <button class="theme-toggle" type="button" aria-label="Ganti mode tampilan">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+  </button>
+  <form method="POST" action="admin/keluar" style="margin:0">
+        <button type="submit" class="btn btn-secondary">Keluar</button>
+  </form>
+</header>
+
+<nav class="admin-tabs" aria-label="Menu admin">
+  <a href="admin.html" >Dashboard</a>
+      <a href="admin-rental.html"  aria-current="page" >Rental</a>
+        <a href="admin-alat.html" >Alat</a>
+    <a href="admin-kategori.html" >Kategori &amp; pool</a>
+        <a href="admin-tarif.html" >Tarif alat</a>
+    <a href="admin-biaya.html" >Biaya &amp; pajak</a>
+        <a href="admin-pesan.html" >Pesan</a>
+        <a href="admin-perusahaan.html" >Perusahaan</a>
+        <a href="admin-pengguna.html" >Pengguna</a>
+        <a href="admin-aktivitas.html" >Aktivitas</a>
+  </nav>
+
+<main class="admin-main">
+    
+  <div class="detail-head">
+  <div>
+    <a href="admin-rental.html" class="back-link">← Semua rental</a>
+    <h1 class="admin-h1" style="margin:6px 0 0">R-2026-00004</h1>
+  </div>
+  <span class="badge badge-confirmed badge-lg">confirmed</span>
+</div>
+
+<div class="admin-grid cols-2" style="margin-top:18px">
+  <div class="admin-card">
+    <h3>Penyewa</h3>
+    <p style="margin:0;line-height:1.7">
+      <strong>CV Mitra Logistik Surabaya</strong><br>
+      PIC: Yusuf Maulana<br>
+      <a href="https://wa.me/6285706190723" rel="noopener">0857-0619-0723</a>
+    </p>
+  </div>
+  <div class="admin-card">
+    <h3>Proyek &amp; periode</h3>
+    <p style="margin:0;line-height:1.7">
+      Gudang Kalianak, Surabaya<br>
+      15 Sep 2026 – 21 Sep 2026
+      (7 hari)
+    </p>
+  </div>
+</div>
+
+<div class="admin-card">
+  <h3>Unit</h3>
+  <table class="table">
+    <thead><tr><th>Kode</th><th>Model</th><th>Skema</th><th>Tarif snapshot</th><th>Subtotal</th></tr></thead>
+    <tbody>
+              <tr>
+          <td style="font-weight:600">FORKLIFT-001</td>
+          <td>Toyota 3 Ton Diesel</td>
+          <td>mingguan × 1</td>
+          <td>Rp 7.200.000</td>
+          <td>Rp 7.200.000</td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FORKLIFT-002</td>
+          <td>Toyota 3 Ton Diesel</td>
+          <td>mingguan × 1</td>
+          <td>Rp 7.200.000</td>
+          <td>Rp 7.200.000</td>
+        </tr>
+          </tbody>
+  </table>
+  <p class="admin-note">Tarif di atas adalah snapshot saat pengajuan dibuat. Mengubah tarif master tidak mengubah angka ini.</p>
+</div>
+
+<div class="admin-card">
+  <h3>Biaya</h3>
+  <div class="sum" style="margin-top:0">
+    <div class="sum-row"><span>Sewa unit</span><span>Rp 14.400.000</span></div>
+          <div class="sum-row"><span>Operator — 7 hari × 2</span><span>Rp 6.300.000</span></div>
+          <div class="sum-row"><span>Mobilisasi &amp; demobilisasi 18 km</span><span>Rp 1.900.000</span></div>
+              <div class="sum-row"><span>PPN 11%</span><span>Rp 2.486.000</span></div>
+        <div class="sum-total"><span>Total</span><span>Rp 25.086.000</span></div>
+  </div>
+</div>
+
+
+
+<div class="admin-card">
+  <h3>Tindakan</h3>
+  <p class="admin-note" style="margin-top:0">
+    Status sekarang: <strong>Dikonfirmasi</strong>.
+    Semua tindakan ditampilkan; yang tidak berlaku dari status ini dinonaktifkan
+    beserta alasannya.
+  </p>
+
+  <div class="aksi-row">
+    <form method="POST" action="admin/rental/R-2026-00004/konfirmasi">
+            <button class="btn btn-primary" type="submit" disabled               title="Hanya dari status Menunggu" >
+        Konfirmasi &amp; kunci unit
+      </button>
+    </form>
+
+    <form method="POST" action="admin/rental/R-2026-00004/selesai">
+            <button class="btn btn-secondary" type="submit"               >
+        Tandai selesai
+      </button>
+    </form>
+
+    <form method="POST" action="admin/rental/R-2026-00004/batal" class="batal-form">
+            <input class="input" name="alasan" type="text" placeholder="Alasan pembatalan (opsional)" >
+      <button class="btn btn-secondary btn-danger" type="submit"               >
+        Batalkan
+      </button>
+    </form>
+  </div>
+
+  <div class="kotak-kembalikan">
+    <strong>Kembalikan status</strong>
+    <p style="margin:6px 0 10px">
+      Untuk membatalkan tindakan yang salah klik. Mengembalikan ke
+      <em>Menunggu</em> melepas kunci unit; mengembalikan ke status terkunci
+      memeriksa ketersediaan lagi dan ditolak kalau unitnya sudah diambil
+      rental lain.
+    </p>
+    <div class="aksi-row">
+      <form method="POST" action="admin/rental/R-2026-00004/kembalikan">
+                <input type="hidden" name="tujuan" value="pending">
+        <button class="btn btn-secondary" type="submit"                 >
+          ← Kembalikan ke Menunggu
+        </button>
+      </form>
+
+      <form method="POST" action="admin/rental/R-2026-00004/kembalikan">
+                <input type="hidden" name="tujuan" value="active">
+        <button class="btn btn-secondary" type="submit"                 >
+          ← Kembalikan ke Berjalan
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <p class="admin-note">Konfirmasi memeriksa ulang ketersediaan di dalam transaksi. Kalau unitnya keburu diambil rental lain, konfirmasi ditolak.</p>
+</div>
+
+<div class="admin-card">
+  <h3>Kirim rincian lewat WhatsApp</h3>
+  <p class="admin-note" style="margin-top:0">
+    Isi pesannya sama persis dengan halaman ini: penyewa, periode, daftar unit
+    beserta snapshot tarif, dan rincian biaya.
+  </p>
+  <div class="aksi-row">
+    <a class="btn btn-secondary" href="https://wa.me/?text=%2APENGAJUAN%20SEWA%20BARU%2A%0ANo.%20R-2026-00004%0AStatus%3A%20Dikonfirmasi%0A%0A%2APenyewa%2A%0ACV%20Mitra%20Logistik%20Surabaya%0APIC%3A%20Yusuf%20Maulana%0AWA%3A%200857-0619-0723%0A%0A%2AProyek%20%26%20periode%2A%0AGudang%20Kalianak%2C%20Surabaya%0APekerjaan%3A%20Angkat%20material%0A15%20Sep%202026%20-%2021%20Sep%202026%20%287%20hari%29%0A%0A%2AUnit%2A%0A-%20FORKLIFT-001%20%28Toyota%203%20Ton%20Diesel%29%0A%20%20mingguan%20x%201%20minggu%20%40%20Rp%207.200.000%20%3D%20Rp%207.200.000%0A-%20FORKLIFT-002%20%28Toyota%203%20Ton%20Diesel%29%0A%20%20mingguan%20x%201%20minggu%20%40%20Rp%207.200.000%20%3D%20Rp%207.200.000%0A%0A%2ABiaya%2A%0ASewa%20unit%3A%20Rp%2014.400.000%0AOperator%20%E2%80%94%207%20hari%20%C3%97%202%3A%20Rp%206.300.000%0AMobilisasi%20%26%20demobilisasi%2018%20km%3A%20Rp%201.900.000%0APPN%2011%25%3A%20Rp%202.486.000%0A%2ATOTAL%3A%20Rp%2025.086.000%2A%0A%0ADikirim%20otomatis%20dari%20situs%20PT%20Bumi%20Konstruksi%20Nusantara." target="_blank" rel="noopener">Teruskan ke rekan</a>
+    <a class="btn btn-secondary" href="https://wa.me/6285706190723?text=%2APENGAJUAN%20SEWA%20BARU%2A%0ANo.%20R-2026-00004%0AStatus%3A%20Dikonfirmasi%0A%0A%2APenyewa%2A%0ACV%20Mitra%20Logistik%20Surabaya%0APIC%3A%20Yusuf%20Maulana%0AWA%3A%200857-0619-0723%0A%0A%2AProyek%20%26%20periode%2A%0AGudang%20Kalianak%2C%20Surabaya%0APekerjaan%3A%20Angkat%20material%0A15%20Sep%202026%20-%2021%20Sep%202026%20%287%20hari%29%0A%0A%2AUnit%2A%0A-%20FORKLIFT-001%20%28Toyota%203%20Ton%20Diesel%29%0A%20%20mingguan%20x%201%20minggu%20%40%20Rp%207.200.000%20%3D%20Rp%207.200.000%0A-%20FORKLIFT-002%20%28Toyota%203%20Ton%20Diesel%29%0A%20%20mingguan%20x%201%20minggu%20%40%20Rp%207.200.000%20%3D%20Rp%207.200.000%0A%0A%2ABiaya%2A%0ASewa%20unit%3A%20Rp%2014.400.000%0AOperator%20%E2%80%94%207%20hari%20%C3%97%202%3A%20Rp%206.300.000%0AMobilisasi%20%26%20demobilisasi%2018%20km%3A%20Rp%201.900.000%0APPN%2011%25%3A%20Rp%202.486.000%0A%2ATOTAL%3A%20Rp%2025.086.000%2A%0A%0ADikirim%20otomatis%20dari%20situs%20PT%20Bumi%20Konstruksi%20Nusantara." target="_blank" rel="noopener">Kirim ke penyewa</a>
+  </div>
+</div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/admin-format.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>

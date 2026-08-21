@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pesan masuk — Sewa Alat Berat</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body class="admin"><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi" href="index.html">Situs</a><a class="demo-sisi is-aktif" href="admin.html" aria-current="page">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+
+<header class="admin-bar">
+  <div class="admin-brand">Panel Admin<small>Rifa Andriani · Super Admin</small></div>
+  <a class="btn btn-secondary" href="index.html" target="_blank" rel="noopener">Lihat situs</a>
+  <button class="theme-toggle" type="button" aria-label="Ganti mode tampilan">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+  </button>
+  <form method="POST" action="admin/keluar" style="margin:0">
+        <button type="submit" class="btn btn-secondary">Keluar</button>
+  </form>
+</header>
+
+<nav class="admin-tabs" aria-label="Menu admin">
+  <a href="admin.html" >Dashboard</a>
+      <a href="admin-rental.html" >Rental</a>
+        <a href="admin-alat.html" >Alat</a>
+    <a href="admin-kategori.html" >Kategori &amp; pool</a>
+        <a href="admin-tarif.html" >Tarif alat</a>
+    <a href="admin-biaya.html" >Biaya &amp; pajak</a>
+        <a href="admin-pesan.html"  aria-current="page" >Pesan</a>
+        <a href="admin-perusahaan.html" >Perusahaan</a>
+        <a href="admin-pengguna.html" >Pengguna</a>
+        <a href="admin-aktivitas.html" >Aktivitas</a>
+  </nav>
+
+<main class="admin-main">
+    
+  <h1 class="admin-h1">Pesan masuk</h1>
+<p class="admin-sub">Dari formulir di halaman Kontak.</p>
+
+<div class="filter-row">
+  <a class="chip-link " href="admin-pesan.html">Semua</a>
+  <a class="chip-link  is-on " href="admin-pesan-belum.html">
+    Belum ditangani <span class="chip-count">2</span></a>
+</div>
+
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Hendra Kusuma <span class="text-muted" style="font-weight:400">· PT Jalan Raya Persada</span></h3>
+      <span class="badge badge-pending">baru</span>
+      <span class="spacer"></span>
+      <span class="text-muted" style="font-size:12px">21 Agu 2026, 05:02</span>
+    </div>
+    <p style="margin:0 0 10px;font-size:13px">
+      <strong>Sewa unit</strong><br>
+      <a href="https://wa.me/081299881122" rel="noopener">0812-9988-1122</a>
+    </p>
+    <p style="margin:0 0 12px;white-space:pre-line">Butuh 2 excavator 20 ton untuk galian saluran 3 km di Paciran, mulai 1 Oktober, durasi 3 minggu.</p>
+    <form method="POST" action="admin/pesan/1/tandai" style="margin:0">
+            <button class="btn btn-secondary" type="submit">
+        Tandai sudah ditangani
+      </button>
+    </form>
+  </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Sri Wahyuni <span class="text-muted" style="font-weight:400">· CV Beton Perkasa</span></h3>
+      <span class="badge badge-pending">baru</span>
+      <span class="spacer"></span>
+      <span class="text-muted" style="font-size:12px">21 Agu 2026, 05:02</span>
+    </div>
+    <p style="margin:0 0 10px;font-size:13px">
+      <strong>Surat dukungan alat (tender)</strong><br>
+      <a href="https://wa.me/085712003344" rel="noopener">0857-1200-3344</a>
+    </p>
+    <p style="margin:0 0 12px;white-space:pre-line">Mohon surat dukungan 1 vibro roller dan 1 dump truck untuk tender Dinas PU, pemasukan dokumen 22 September.</p>
+    <form method="POST" action="admin/pesan/2/tandai" style="margin:0">
+            <button class="btn btn-secondary" type="submit">
+        Tandai sudah ditangani
+      </button>
+    </form>
+  </div>
+
+<div style="margin-top:16px"></div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/admin-format.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>

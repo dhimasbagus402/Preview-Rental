@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alat — Sewa Alat Berat</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body class="admin"><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi" href="index.html">Situs</a><a class="demo-sisi is-aktif" href="admin.html" aria-current="page">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+
+<header class="admin-bar">
+  <div class="admin-brand">Panel Admin<small>Rifa Andriani · Super Admin</small></div>
+  <a class="btn btn-secondary" href="index.html" target="_blank" rel="noopener">Lihat situs</a>
+  <button class="theme-toggle" type="button" aria-label="Ganti mode tampilan">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+  </button>
+  <form method="POST" action="admin/keluar" style="margin:0">
+        <button type="submit" class="btn btn-secondary">Keluar</button>
+  </form>
+</header>
+
+<nav class="admin-tabs" aria-label="Menu admin">
+  <a href="admin.html" >Dashboard</a>
+      <a href="admin-rental.html" >Rental</a>
+        <a href="admin-alat.html"  aria-current="page" >Alat</a>
+    <a href="admin-kategori.html" >Kategori &amp; pool</a>
+        <a href="admin-tarif.html" >Tarif alat</a>
+    <a href="admin-biaya.html" >Biaya &amp; pajak</a>
+        <a href="admin-pesan.html" >Pesan</a>
+        <a href="admin-perusahaan.html" >Perusahaan</a>
+        <a href="admin-pengguna.html" >Pengguna</a>
+        <a href="admin-aktivitas.html" >Aktivitas</a>
+  </nav>
+
+<main class="admin-main">
+    
+  <div class="detail-head">
+  <div><h1 class="admin-h1">Alat</h1>
+    <p class="admin-sub" style="margin:0">Satu baris = satu unit fisik. Dua PC200 punya jadwal dan status terpisah.</p></div>
+      <a class="btn btn-primary" href="admin-alat-baru.html" style="margin-left:auto">+ Tambah unit</a>
+  </div>
+
+<form method="GET" class="filter-row" style="margin-top:16px;align-items:flex-end">
+  <div class="field" style="width:200px"><label for="q">Cari</label>
+    <input class="input" id="q" name="q" value="" placeholder="Kode / nama / model"></div>
+  <div class="field" style="width:170px"><label for="kategori">Kategori</label>
+    <select class="input" id="kategori" name="kategori"><option value="">Semua</option>
+      <option value="7" >Attachment</option><option value="2" >Bulldozer</option><option value="5" >Dump truck</option><option value="1" >Excavator</option><option value="6" >Forklift</option><option value="3" >Mobile crane</option><option value="4" >Vibro roller</option>    </select></div>
+  <div class="field" style="width:160px"><label for="status">Status</label>
+    <select class="input" id="status" name="status"><option value="">Semua</option>
+              <option value="available" >Siap (24)</option>
+              <option value="reserved" >Dibooking (5)</option>
+              <option value="rented" >Disewa (0)</option>
+              <option value="unavailable" >Tidak tersedia (1)</option>
+          </select></div>
+  <div class="field" style="width:160px"><label for="lokasi">Pool</label>
+    <select class="input" id="lokasi" name="lokasi"><option value="">Semua</option>
+      <option value="2" >Gresik</option><option value="1" >Lamongan</option><option value="4" >Surabaya</option><option value="3" >Tuban</option>    </select></div>
+  <div class="field" style="width:150px"><label for="tampil">Tampil di situs</label>
+    <select class="input" id="tampil" name="tampil"><option value="">Semua</option>
+      <option value="ya" >Tampil</option>
+      <option value="tidak" >Tersembunyi</option>
+    </select></div>
+  <button class="btn btn-primary" type="submit" style="padding:9px 16px">Saring</button>
+  <a class="btn btn-secondary" href="admin-alat.html" style="padding:9px 16px">Reset</a>
+</form>
+
+<div class="admin-card" style="padding:0;overflow-x:auto">
+  <table class="table">
+    <thead><tr><th>Kode</th><th>Nama</th><th>Kategori</th><th>Pool</th><th>Status</th><th>Tampil di situs</th><th class="u-act">Tindakan</th></tr></thead>
+    <tbody>
+              <tr>
+          <td style="font-weight:600">BREAKER-001</td>
+          <td>Attachment Breaker Soosan SB81<br><span class="text-muted" style="font-size:11.5px">Soosan SB81  · 2020 </span></td>
+          <td>Attachment</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit BREAKER-001</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-breaker-001-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/28/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/28">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">BREAKER-002</td>
+          <td>Attachment Breaker Soosan SB81<br><span class="text-muted" style="font-size:11.5px">Soosan SB81  · 2021 </span></td>
+          <td>Attachment</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit BREAKER-002</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-breaker-002-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/29/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/29">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">BREAKER-003</td>
+          <td>Attachment Breaker Soosan SB81<br><span class="text-muted" style="font-size:11.5px">Soosan SB81  · 2022 </span></td>
+          <td>Attachment</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit BREAKER-003</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-breaker-003-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/30/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/30">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">D65-001</td>
+          <td>Bulldozer Komatsu D65E-12<br><span class="text-muted" style="font-size:11.5px">Komatsu D65E-12  · 2020 </span></td>
+          <td>Bulldozer</td>
+          <td>Tuban</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                          <div class="jadwal-pakai">
+  <div class="jadwal-baris">
+          <a href="admin-rental-r-2026-00003.html">R-2026-00003</a>
+        <span class="jadwal-pisah">·</span>28 Sep – 27 Okt 2026
+          <span class="jadwal-tag">belum mengunci</span>
+      </div>
+
+      <div class="jadwal-sub">Dinas PU Kabupaten Tuban · Land clearing</div>
+  
+  </div>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit D65-001</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-d65-001-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+                          <a class="menu-item" href="admin-rental-r-2026-00003.html">
+          Lihat rental R-2026-00003
+          <small>
+            Menunggu ·
+            28 Sep –
+            27 Okt 2026
+          </small>
+        </a>
+          
+    <form method="POST" action="admin/alat/11/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/11">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">D65-002</td>
+          <td>Bulldozer Komatsu D65E-12<br><span class="text-muted" style="font-size:11.5px">Komatsu D65E-12  · 2021 </span></td>
+          <td>Bulldozer</td>
+          <td>Tuban</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit D65-002</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-d65-002-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/12/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/12">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">D65-003</td>
+          <td>Bulldozer Komatsu D65E-12<br><span class="text-muted" style="font-size:11.5px">Komatsu D65E-12  · 2022 </span></td>
+          <td>Bulldozer</td>
+          <td>Tuban</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit D65-003</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-d65-003-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/13/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/13">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FM260-001</td>
+          <td>Dump Truck Hino FM260 20 m³<br><span class="text-muted" style="font-size:11.5px">Hino FM260  · 2020 </span></td>
+          <td>Dump truck</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FM260-001</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-fm260-001-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/19/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/19">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FM260-002</td>
+          <td>Dump Truck Hino FM260 20 m³<br><span class="text-muted" style="font-size:11.5px">Hino FM260  · 2021 </span></td>
+          <td>Dump truck</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FM260-002</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-fm260-002-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/20/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/20">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FM260-003</td>
+          <td>Dump Truck Hino FM260 20 m³<br><span class="text-muted" style="font-size:11.5px">Hino FM260  · 2022 </span></td>
+          <td>Dump truck</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FM260-003</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-fm260-003-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/21/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/21">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FM260-004</td>
+          <td>Dump Truck Hino FM260 20 m³<br><span class="text-muted" style="font-size:11.5px">Hino FM260  · 2023 </span></td>
+          <td>Dump truck</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FM260-004</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-fm260-004-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/22/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/22">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FM260-005</td>
+          <td>Dump Truck Hino FM260 20 m³<br><span class="text-muted" style="font-size:11.5px">Hino FM260  · 2019 </span></td>
+          <td>Dump truck</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FM260-005</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-fm260-005-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/23/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/23">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FORKLIFT-001</td>
+          <td>Forklift Toyota 3 Ton Diesel<br><span class="text-muted" style="font-size:11.5px">Toyota 3 Ton Diesel  · 2020 </span></td>
+          <td>Forklift</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-pending">Dibooking</span>
+                          <div class="jadwal-pakai">
+  <div class="jadwal-baris">
+          <a href="admin-rental-r-2026-00004.html">R-2026-00004</a>
+        <span class="jadwal-pisah">·</span>15–21 Sep 2026
+      </div>
+
+      <div class="jadwal-sub">CV Mitra Logistik Surabaya · Angkat material</div>
+  
+  </div>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FORKLIFT-001</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-forklift-001-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+                          <a class="menu-item" href="admin-rental-r-2026-00004.html">
+          Lihat rental R-2026-00004
+          <small>
+            Dikonfirmasi ·
+            15 Sep –
+            21 Sep 2026
+          </small>
+        </a>
+          
+    <form method="POST" action="admin/alat/24/perawatan">
+            <button class="menu-item" type="submit" disabled>
+        Tandai perawatan
+        <small>
+                      Unit sedang Dibooking — selesaikan rentalnya dulu
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/24">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" disabled>
+          Nonaktifkan
+          <small>
+                          Masih terkunci
+                            rental R-2026-00004
+              — selesaikan atau batalkan dulu
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FORKLIFT-002</td>
+          <td>Forklift Toyota 3 Ton Diesel<br><span class="text-muted" style="font-size:11.5px">Toyota 3 Ton Diesel  · 2021 </span></td>
+          <td>Forklift</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-pending">Dibooking</span>
+                          <div class="jadwal-pakai">
+  <div class="jadwal-baris">
+          <a href="admin-rental-r-2026-00004.html">R-2026-00004</a>
+        <span class="jadwal-pisah">·</span>15–21 Sep 2026
+      </div>
+
+      <div class="jadwal-sub">CV Mitra Logistik Surabaya · Angkat material</div>
+  
+  </div>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FORKLIFT-002</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-forklift-002-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+                          <a class="menu-item" href="admin-rental-r-2026-00004.html">
+          Lihat rental R-2026-00004
+          <small>
+            Dikonfirmasi ·
+            15 Sep –
+            21 Sep 2026
+          </small>
+        </a>
+          
+    <form method="POST" action="admin/alat/25/perawatan">
+            <button class="menu-item" type="submit" disabled>
+        Tandai perawatan
+        <small>
+                      Unit sedang Dibooking — selesaikan rentalnya dulu
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/25">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" disabled>
+          Nonaktifkan
+          <small>
+                          Masih terkunci
+                            rental R-2026-00004
+              — selesaikan atau batalkan dulu
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FORKLIFT-003</td>
+          <td>Forklift Toyota 3 Ton Diesel<br><span class="text-muted" style="font-size:11.5px">Toyota 3 Ton Diesel  · 2022 </span></td>
+          <td>Forklift</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FORKLIFT-003</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-forklift-003-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/26/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/26">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">FORKLIFT-004</td>
+          <td>Forklift Toyota 3 Ton Diesel<br><span class="text-muted" style="font-size:11.5px">Toyota 3 Ton Diesel  · 2023 </span></td>
+          <td>Forklift</td>
+          <td>Surabaya</td>
+          <td>
+            <span class="badge badge-cancelled">Tidak tersedia</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-cancelled">tersembunyi</span>
+              <span class="text-muted" style="display:block;font-size:11px;margin-top:3px">sedang perawatan</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit FORKLIFT-004</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-forklift-004-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/27/perawatan">
+            <button class="menu-item" type="submit" >
+        Selesai perawatan
+        <small>
+                      Kembalikan ke status siap dan tampilkan lagi di situs
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/27">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">NK250-001</td>
+          <td>Mobile Crane Kato NK-250<br><span class="text-muted" style="font-size:11.5px">Kato NK-250  · 2020 </span></td>
+          <td>Mobile crane</td>
+          <td>Gresik</td>
+          <td>
+            <span class="badge badge-pending">Dibooking</span>
+                          <div class="jadwal-pakai">
+  <div class="jadwal-baris">
+          <a href="admin-rental-r-2026-00002.html">R-2026-00002</a>
+        <span class="jadwal-pisah">·</span>10–25 Sep 2026
+      </div>
+
+      <div class="jadwal-sub">PT Sinar Pelabuhan Timur · Angkat material</div>
+  
+  </div>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit NK250-001</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-nk250-001-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+                          <a class="menu-item" href="admin-rental-r-2026-00002.html">
+          Lihat rental R-2026-00002
+          <small>
+            Berjalan ·
+            10 Sep –
+            25 Sep 2026
+          </small>
+        </a>
+          
+    <form method="POST" action="admin/alat/14/perawatan">
+            <button class="menu-item" type="submit" disabled>
+        Tandai perawatan
+        <small>
+                      Unit sedang Dibooking — selesaikan rentalnya dulu
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/14">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" disabled>
+          Nonaktifkan
+          <small>
+                          Masih terkunci
+                            rental R-2026-00002
+              — selesaikan atau batalkan dulu
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">NK250-002</td>
+          <td>Mobile Crane Kato NK-250<br><span class="text-muted" style="font-size:11.5px">Kato NK-250  · 2021 </span></td>
+          <td>Mobile crane</td>
+          <td>Gresik</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit NK250-002</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-nk250-002-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/15/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/15">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">PC200-001</td>
+          <td>Excavator Komatsu PC200-8<br><span class="text-muted" style="font-size:11.5px">Komatsu PC200-8  · 2020 </span></td>
+          <td>Excavator</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-pending">Dibooking</span>
+                          <div class="jadwal-pakai">
+  <div class="jadwal-baris">
+          <a href="admin-rental-r-2026-00001.html">R-2026-00001</a>
+        <span class="jadwal-pisah">·</span>16–22 Sep 2026
+      </div>
+
+      <div class="jadwal-sub">CV Karya Bangun Sejahtera · Galian &amp; timbunan</div>
+  
+  </div>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit PC200-001</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-pc200-001-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+                          <a class="menu-item" href="admin-rental-r-2026-00001.html">
+          Lihat rental R-2026-00001
+          <small>
+            Dikonfirmasi ·
+            16 Sep –
+            22 Sep 2026
+          </small>
+        </a>
+          
+    <form method="POST" action="admin/alat/1/perawatan">
+            <button class="menu-item" type="submit" disabled>
+        Tandai perawatan
+        <small>
+                      Unit sedang Dibooking — selesaikan rentalnya dulu
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/1">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" disabled>
+          Nonaktifkan
+          <small>
+                          Masih terkunci
+                            rental R-2026-00001
+              — selesaikan atau batalkan dulu
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">PC200-002</td>
+          <td>Excavator Komatsu PC200-8<br><span class="text-muted" style="font-size:11.5px">Komatsu PC200-8  · 2021 </span></td>
+          <td>Excavator</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-pending">Dibooking</span>
+                          <div class="jadwal-pakai">
+  <div class="jadwal-baris">
+          <a href="admin-rental-r-2026-00001.html">R-2026-00001</a>
+        <span class="jadwal-pisah">·</span>16–22 Sep 2026
+      </div>
+
+      <div class="jadwal-sub">CV Karya Bangun Sejahtera · Galian &amp; timbunan</div>
+  
+  </div>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit PC200-002</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-pc200-002-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+                          <a class="menu-item" href="admin-rental-r-2026-00001.html">
+          Lihat rental R-2026-00001
+          <small>
+            Dikonfirmasi ·
+            16 Sep –
+            22 Sep 2026
+          </small>
+        </a>
+          
+    <form method="POST" action="admin/alat/2/perawatan">
+            <button class="menu-item" type="submit" disabled>
+        Tandai perawatan
+        <small>
+                      Unit sedang Dibooking — selesaikan rentalnya dulu
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/2">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" disabled>
+          Nonaktifkan
+          <small>
+                          Masih terkunci
+                            rental R-2026-00001
+              — selesaikan atau batalkan dulu
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">PC200-003</td>
+          <td>Excavator Komatsu PC200-8<br><span class="text-muted" style="font-size:11.5px">Komatsu PC200-8  · 2022 </span></td>
+          <td>Excavator</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit PC200-003</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-pc200-003-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/3/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/3">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">PC200-004</td>
+          <td>Excavator Komatsu PC200-8<br><span class="text-muted" style="font-size:11.5px">Komatsu PC200-8  · 2023 </span></td>
+          <td>Excavator</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit PC200-004</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-pc200-004-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/4/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/4">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">PC200-005</td>
+          <td>Excavator Komatsu PC200-8<br><span class="text-muted" style="font-size:11.5px">Komatsu PC200-8  · 2019 </span></td>
+          <td>Excavator</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit PC200-005</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-pc200-005-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/5/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/5">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">PC200-006</td>
+          <td>Excavator Komatsu PC200-8<br><span class="text-muted" style="font-size:11.5px">Komatsu PC200-8  · 2020 </span></td>
+          <td>Excavator</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit PC200-006</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-pc200-006-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/6/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/6">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">SV512-001</td>
+          <td>Vibro Roller Sakai SV512<br><span class="text-muted" style="font-size:11.5px">Sakai SV512  · 2020 </span></td>
+          <td>Vibro roller</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                          <div class="jadwal-pakai">
+  <div class="jadwal-baris">
+          <a href="admin-rental-r-2026-00003.html">R-2026-00003</a>
+        <span class="jadwal-pisah">·</span>28 Sep – 27 Okt 2026
+          <span class="jadwal-tag">belum mengunci</span>
+      </div>
+
+      <div class="jadwal-sub">Dinas PU Kabupaten Tuban · Land clearing</div>
+  
+  </div>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit SV512-001</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-sv512-001-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+                          <a class="menu-item" href="admin-rental-r-2026-00003.html">
+          Lihat rental R-2026-00003
+          <small>
+            Menunggu ·
+            28 Sep –
+            27 Okt 2026
+          </small>
+        </a>
+          
+    <form method="POST" action="admin/alat/16/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/16">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+              <tr>
+          <td style="font-weight:600">SV512-002</td>
+          <td>Vibro Roller Sakai SV512<br><span class="text-muted" style="font-size:11.5px">Sakai SV512  · 2021 </span></td>
+          <td>Vibro roller</td>
+          <td>Lamongan</td>
+          <td>
+            <span class="badge badge-confirmed">Siap</span>
+                      </td>
+                    <td>
+                          <span class="badge badge-confirmed">tampil</span>
+                      </td>
+          <td class="u-act">
+                          <details class="menu">
+  <summary class="menu-btn">
+    Kelola<span class="menu-caret" aria-hidden="true">▾</span>
+    <span class="sr">unit SV512-002</span>
+  </summary>
+
+  <div class="menu-panel">
+    <a class="menu-item" href="admin-alat-sv512-002-ubah.html">
+      Ubah data
+      <small>Kode, kategori, pool, tarif, foto, spesifikasi</small>
+    </a>
+
+              
+    <form method="POST" action="admin/alat/17/perawatan">
+            <button class="menu-item" type="submit" >
+        Tandai perawatan
+        <small>
+                      Sembunyikan sementara dari situs; jadwal lama tetap tersimpan
+                  </small>
+      </button>
+    </form>
+
+          <form method="POST" action="admin/alat/17">
+                <input type="hidden" name="_method" value="DELETE">        <button class="menu-item is-bahaya" type="submit" >
+          Nonaktifkan
+          <small>
+                          Keluarkan dari armada; riwayat rentalnya tetap tersimpan
+                      </small>
+        </button>
+      </form>
+      </div>
+</details>
+                      </td>
+        </tr>
+          </tbody>
+  </table>
+</div>
+<div style="margin-top:16px"><nav class="pager" role="navigation" aria-label="Navigasi halaman">
+    <div class="pager-info">
+      Menampilkan 1–25
+      dari 30
+    </div>
+
+    <div class="pager-nav">
+              <span class="pager-btn is-off" aria-disabled="true">‹ Sebelumnya</span>
+      
+              
+                                            <span class="pager-btn is-on" aria-current="page">1</span>
+                                                <a class="pager-btn" href="admin-alat-hal-2.html">2</a>
+                                    
+              <a class="pager-btn" href="admin-alat-hal-2.html" rel="next">Berikutnya ›</a>
+          </div>
+  </nav>
+</div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/admin-format.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>

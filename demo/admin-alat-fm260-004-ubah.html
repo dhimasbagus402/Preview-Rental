@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubah FM260-004 — Sewa Alat Berat</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body class="admin"><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi" href="index.html">Situs</a><a class="demo-sisi is-aktif" href="admin.html" aria-current="page">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+
+<header class="admin-bar">
+  <div class="admin-brand">Panel Admin<small>Rifa Andriani · Super Admin</small></div>
+  <a class="btn btn-secondary" href="index.html" target="_blank" rel="noopener">Lihat situs</a>
+  <button class="theme-toggle" type="button" aria-label="Ganti mode tampilan">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+  </button>
+  <form method="POST" action="admin/keluar" style="margin:0">
+        <button type="submit" class="btn btn-secondary">Keluar</button>
+  </form>
+</header>
+
+<nav class="admin-tabs" aria-label="Menu admin">
+  <a href="admin.html" >Dashboard</a>
+      <a href="admin-rental.html" >Rental</a>
+        <a href="admin-alat.html"  aria-current="page" >Alat</a>
+    <a href="admin-kategori.html" >Kategori &amp; pool</a>
+        <a href="admin-tarif.html" >Tarif alat</a>
+    <a href="admin-biaya.html" >Biaya &amp; pajak</a>
+        <a href="admin-pesan.html" >Pesan</a>
+        <a href="admin-perusahaan.html" >Perusahaan</a>
+        <a href="admin-pengguna.html" >Pengguna</a>
+        <a href="admin-aktivitas.html" >Aktivitas</a>
+  </nav>
+
+<main class="admin-main">
+    
+  <a href="admin-alat.html" class="back-link">← Semua alat</a>
+<h1 class="admin-h1" style="margin-top:6px">Ubah FM260-004</h1>
+
+<form method="POST" action="admin/alat/22">
+     <input type="hidden" name="_method" value="PUT"> 
+  <div class="admin-card">
+    <h3>Identitas unit</h3>
+    <div class="admin-grid">
+      <div class="field"><label for="code">Kode unit</label>
+        <input class="input" id="code" name="code" value="FM260-004" required>
+        <span class="suffix">Unik, mis. PC200-001.</span></div>
+      <div class="field"><label for="name">Nama lengkap</label>
+        <input class="input" id="name" name="name" value="Dump Truck Hino FM260 20 m³" required></div>
+      <div class="field"><label for="category_id">Kategori</label>
+        <select class="input" id="category_id" name="category_id" required>
+          <option value="7" >Attachment</option><option value="2" >Bulldozer</option><option value="5" selected>Dump truck</option><option value="1" >Excavator</option><option value="6" >Forklift</option><option value="3" >Mobile crane</option><option value="4" >Vibro roller</option>        </select></div>
+      <div class="field"><label for="location_id">Pool</label>
+        <select class="input" id="location_id" name="location_id"><option value="">—</option>
+          <option value="2" >Gresik</option><option value="1" >Lamongan</option><option value="4" selected>Surabaya</option><option value="3" >Tuban</option>        </select></div>
+      <div class="field"><label for="brand">Merek</label>
+        <input class="input" id="brand" name="brand" value="Hino"></div>
+      <div class="field"><label for="model">Model</label>
+        <input class="input" id="model" name="model" value="Hino FM260">
+        <span class="suffix">Unit dengan model sama digabung jadi satu kartu di katalog.</span></div>
+      <div class="field"><label for="year">Tahun</label>
+        <input class="input" id="year" name="year" type="number" min="1950" max="2100" value="2023"></div>
+      <div class="field"><label for="serial_number">Nomor seri</label>
+        <input class="input" id="serial_number" name="serial_number" value=""></div>
+      <div class="field"><label for="status">Status</label>
+        <select class="input" id="status" name="status" required>
+                      <option value="available" selected>Siap</option>
+                      <option value="reserved" >Dibooking</option>
+                      <option value="rented" >Disewa</option>
+                      <option value="unavailable" >Tidak tersedia / perawatan</option>
+                  </select></div>
+      <div class="field wide"><label for="description">Deskripsi (tampil di katalog)</label>
+        <textarea class="input" id="description" name="description" style="min-height:70px"></textarea></div>
+    </div>
+    <label class="radio" style="margin-top:12px">
+      <input type="checkbox" name="active" value="1" checked><span class="dot"></span>
+      Aktif — tampil di katalog situs
+    </label>
+  </div>
+
+      <div class="admin-card">
+      <h3>Tarif</h3>
+      <p style="margin:0;font-size:13px">
+                  Berlaku sekarang: <strong>Rp 1.750.000/hari</strong>.
+                <a href="admin-tarif.html">Ubah di menu Tarif alat</a> agar riwayat harganya tetap terjaga.
+      </p>
+    </div>
+  
+  <div class="admin-card">
+    <h3>Spesifikasi teknis</h3>
+    <p class="admin-note" style="margin-top:0">Tampil sebagai tabel di halaman detail unit. Baris kosong diabaikan.</p>
+    
+    <div id="spec-daftar">
+      <div class="baris-ulang-kepala spec"><span>Label</span><span>Nilai</span><span></span></div>
+
+              <div class="baris-ulang spec">
+          <div class="field">
+            <input class="input" name="spec_label[]" data-spec="label"
+                   value="Kapasitas bak" placeholder="mis. Berat operasi">
+          </div>
+          <div class="field">
+            <input class="input" name="spec_nilai[]" data-spec="nilai"
+                   value="20 m³" placeholder="mis. 20.000 kg">
+          </div>
+          <button type="button" class="btn btn-secondary btn-danger baris-hapus"
+                  data-spec-hapus hidden>Hapus</button>
+        </div>
+              <div class="baris-ulang spec">
+          <div class="field">
+            <input class="input" name="spec_label[]" data-spec="label"
+                   value="Tenaga mesin" placeholder="mis. Berat operasi">
+          </div>
+          <div class="field">
+            <input class="input" name="spec_nilai[]" data-spec="nilai"
+                   value="191 kW" placeholder="mis. 20.000 kg">
+          </div>
+          <button type="button" class="btn btn-secondary btn-danger baris-hapus"
+                  data-spec-hapus hidden>Hapus</button>
+        </div>
+              <div class="baris-ulang spec">
+          <div class="field">
+            <input class="input" name="spec_label[]" data-spec="label"
+                   value="Konfigurasi" placeholder="mis. Berat operasi">
+          </div>
+          <div class="field">
+            <input class="input" name="spec_nilai[]" data-spec="nilai"
+                   value="6×4" placeholder="mis. 20.000 kg">
+          </div>
+          <button type="button" class="btn btn-secondary btn-danger baris-hapus"
+                  data-spec-hapus hidden>Hapus</button>
+        </div>
+              <div class="baris-ulang spec">
+          <div class="field">
+            <input class="input" name="spec_label[]" data-spec="label"
+                   value="" placeholder="mis. Berat operasi">
+          </div>
+          <div class="field">
+            <input class="input" name="spec_nilai[]" data-spec="nilai"
+                   value="" placeholder="mis. 20.000 kg">
+          </div>
+          <button type="button" class="btn btn-secondary btn-danger baris-hapus"
+                  data-spec-hapus hidden>Hapus</button>
+        </div>
+          </div>
+
+    
+    <template id="spec-contoh">
+      <div class="baris-ulang spec">
+        <div class="field">
+          <input class="input" name="spec_label[]" data-spec="label" placeholder="mis. Berat operasi">
+        </div>
+        <div class="field">
+          <input class="input" name="spec_nilai[]" data-spec="nilai" placeholder="mis. 20.000 kg">
+        </div>
+        <button type="button" class="btn btn-secondary btn-danger baris-hapus" data-spec-hapus>Hapus</button>
+      </div>
+    </template>
+
+    <button type="button" class="btn btn-secondary" id="spec-tambah" hidden>+ Tambah spesifikasi</button>
+  </div>
+
+  <div class="admin-actions">
+    <button class="btn btn-primary" type="submit">Simpan perubahan</button>
+    <a class="btn btn-secondary" href="admin-alat.html">Batal</a>
+  </div>
+</form>
+
+  <div class="admin-card">
+    <h3>Foto unit</h3>
+    <p class="admin-note" style="margin-top:0">
+      Foto <strong>utama</strong> dipakai di kartu katalog dan halaman detail.
+      JPG, PNG, atau WEBP; maksimal 4 MB dan minimal 400&times;300 piksel.
+    </p>
+
+          <p class="admin-empty" style="margin:0 0 14px">Belum ada foto — katalog menampilkan placeholder bergaris.</p>
+    
+    <form method="POST" action="admin/alat/22/gambar" enctype="multipart/form-data">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="gambar">Tambah foto</label>
+          <input class="input" id="gambar" name="gambar[]" type="file" accept="image/jpeg,image/png,image/webp" multiple required>
+          <span class="suffix">Bisa pilih beberapa berkas sekaligus (maks. 6).</span>
+        </div>
+        <div class="field">
+          <label for="alt">Teks alternatif</label>
+          <input class="input" id="alt" name="alt" placeholder="Dump Truck Hino FM260 20 m³">
+          <span class="suffix">Dibaca pembaca layar dan tampil bila gambar gagal dimuat.</span>
+        </div>
+      </div>
+      <div class="admin-actions"><button class="btn btn-primary" type="submit">Unggah foto</button></div>
+    </form>
+  </div>
+
+  <div class="admin-card" style="margin-top:20px">
+    <h3>Status unit</h3>
+    <p style="margin:0 0 12px;font-size:13px">
+      Dua saklar yang berbeda. <strong>Perawatan</strong> menyembunyikan unit
+      sementara dan bisa diakhiri kapan saja; <strong>nonaktif</strong>
+      mengeluarkannya dari armada. Unit tidak pernah benar-benar dihapus,
+      supaya riwayat rentalnya tetap valid.
+    </p>
+    <div class="aksi-row">
+      <form method="POST" action="admin/alat/22/perawatan">
+                <button class="btn btn-secondary" type="submit"
+                >
+          Tandai perawatan
+        </button>
+      </form>
+
+              <form method="POST" action="admin/alat/22">
+           <input type="hidden" name="_method" value="DELETE">          <button class="btn btn-secondary btn-danger" type="submit">Nonaktifkan FM260-004</button>
+        </form>
+          </div>
+  </div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/admin-format.js"></script>
+<script src="assets/js/menu.js"></script>
+  <script src="assets/js/spec.js"></script>
+</body>
+</html>

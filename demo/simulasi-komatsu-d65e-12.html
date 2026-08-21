@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulasi Biaya Sewa Alat Berat — PT Bumi Konstruksi Nusantara</title>
+<meta name="description" content="Penyewaan alat berat untuk proyek jalan, pelabuhan, dan tambang di Jawa Timur.">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi is-aktif" href="index.html" aria-current="page">Situs</a><a class="demo-sisi" href="admin.html">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+<a class="skip-link" href="#main">Lompat ke konten</a>
+
+  
+  <p class="pita-demo" role="note">Situs contoh. Nama perusahaan, alamat, nomor telepon, titik peta, dan seluruh tarif di sini adalah data karangan untuk keperluan demonstrasi.</p>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="index.html">BUMI KONSTRUKSI</a>
+    <input type="checkbox" id="navtoggle" class="nav-toggle">
+    <label class="nav-burger" for="navtoggle" aria-label="Buka menu navigasi">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+    </label>
+    <nav class="nav-links" aria-label="Navigasi utama">
+      <a href="index.html" >Beranda</a>
+      <a href="alat-berat.html" >Alat Berat</a>
+      <a href="simulasi-biaya.html"  aria-current="page" >Simulasi Biaya</a>
+      <a href="kontak.html" >Kontak</a>
+      <a href="ajukan-sewa.html" class="btn btn-primary" style="margin-left:8px">Ajukan Sewa</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Ganti ke mode gelap">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main"><div class="wrap" style="padding-inline:0">
+  <div class="calc" id="simulasi">
+
+    <div class="calc-main">
+      <h6 class="kicker">Simulasi biaya sewa</h6>
+      <h1 style="font-size:32px;margin-bottom:6px;max-width:24ch">Hitung sendiri, tanpa menunggu balasan sales.</h1>
+      <p class="lede" style="max-width:56ch">Angka di sebelah kanan memakai tarif resmi kami per 21 Agustus 2026. Untuk sewa di atas 1 bulan atau lebih dari 3 unit, tarif paket bisa lebih rendah.</p>
+
+      <div class="hr"></div>
+
+      <div class="label-mini" id="skema-hd">Skema sewa</div>
+      <div class="segbar" role="group" aria-labelledby="skema-hd">
+        <button type="button" data-mode="harian" aria-pressed="true">Harian</button>
+        <button type="button" data-mode="mingguan" aria-pressed="false">Mingguan</button>
+        <button type="button" data-mode="bulanan" aria-pressed="false">Bulanan</button>
+      </div>
+
+      <div class="grid-15">
+        <div class="field"><label for="unit">Pilih alat</label>
+          <select class="input" id="unit">
+                          <optgroup label="Excavator">
+                                  <option value="komatsu-pc200-8" >
+                    Komatsu PC200-8 — Rp 8.500.000/hari
+                  </option>
+                                  <option value="kubota-u-35" >
+                    Kubota U-35 — Rp 2.900.000/hari
+                  </option>
+                              </optgroup>
+                          <optgroup label="Bulldozer">
+                                  <option value="komatsu-d65e-12" selected>
+                    Komatsu D65E-12 — Rp 12.500.000/hari
+                  </option>
+                              </optgroup>
+                          <optgroup label="Forklift">
+                                  <option value="toyota-3-ton-diesel" >
+                    Toyota 3 Ton Diesel — Rp 1.200.000/hari
+                  </option>
+                              </optgroup>
+                          <optgroup label="Dump truck">
+                                  <option value="hino-fm260" >
+                    Hino FM260 — Rp 1.750.000/hari
+                  </option>
+                              </optgroup>
+                          <optgroup label="Mobile crane">
+                                  <option value="kato-nk-250" >
+                    Kato NK-250 — Rp 9.800.000/hari
+                  </option>
+                              </optgroup>
+                          <optgroup label="Vibro roller">
+                                  <option value="sakai-sv512" >
+                    Sakai SV512 — Rp 3.400.000/hari
+                  </option>
+                              </optgroup>
+                          <optgroup label="Attachment">
+                                  <option value="soosan-sb81" >
+                    Soosan SB81 — Rp 1.200.000/hari
+                  </option>
+                              </optgroup>
+                      </select>
+          <span class="suffix">Dikelompokkan per kategori. Tarif yang tampil adalah tarif harian per unit.</span>
+        </div>
+        <div class="field"><label for="qty">Jumlah unit</label>
+          <select class="input" id="qty">
+            <option value="1">1 unit</option>
+            <option value="2" selected>2 unit</option>
+            <option value="3">3 unit</option>
+            <option value="5">5 unit</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:14px">
+        <div class="field"><label for="dur" id="durasiLabel">Durasi</label><select class="input" id="dur"></select></div>
+        <div class="field"><label for="km">Jarak mobilisasi dari pool</label>
+          <select class="input" id="km">
+                          <option value="18">18 km — Brondong, Lamongan</option>
+                          <option value="28">28 km — Lamongan kota</option>
+                          <option value="45">45 km — Gresik</option>
+                          <option value="90">90 km — Tuban</option>
+                          <option value="90">90 km — Surabaya</option>
+                          <option value="160">160 km — Luar area — nego</option>
+                      </select>
+        </div>
+      </div>
+
+      <div class="checks">
+        <label class="radio"><input type="checkbox" id="op" checked><span class="dot"></span><span id="labelOperator">Termasuk operator bersertifikat</span></label>
+        <label class="radio"><input type="checkbox" id="shift2"><span class="dot"></span>2 shift — 16 jam kerja (+30% tarif unit)</label>
+      </div>
+
+      <p class="callout"><strong>Belum termasuk:</strong> BBM, akomodasi operator untuk lokasi di luar Jawa Timur, dan biaya izin masuk kawasan tertentu.</p>
+    </div>
+
+    <div class="calc-side">
+      <div class="aside-title">Estimasi biaya</div>
+      <div class="calc-unit" id="unitName">—</div>
+      <div class="calc-sum" id="ringkasan">—</div>
+
+      <div class="calc-lines">
+        <div class="calc-line"><span id="barisSewa">Sewa unit</span><span id="sewaRp">—</span></div>
+        <div class="calc-line"><span id="barisShift">Tambahan shift</span><span id="shiftRp">—</span></div>
+        <div class="calc-line"><span id="barisOperator">Operator</span><span id="operatorRp">—</span></div>
+        <div class="calc-line"><span id="barisMobilisasi">Mobilisasi &amp; demobilisasi</span><span id="mobilisasiRp">—</span></div>
+                  <div class="calc-line"><span id="labelPpn">PPN</span><span id="ppnRp">—</span></div>
+              </div>
+
+      <div class="calc-total" role="status" aria-live="polite">
+        <div class="eyebrow">Estimasi total</div>
+        <div class="calc-total-n" id="totalRp">—</div>
+        <div class="calc-total-p" id="perHariRp">—</div>
+      </div>
+
+      <a href="ajukan-sewa.html" id="ajukan-dengan-angka" class="btn btn-primary btn-block" style="padding:12px 14px;font-size:15px;margin-top:16px">Ajukan sewa dengan angka ini</a>
+      <a href="kontak.html" class="btn btn-secondary btn-block">Minta penawaran resmi (PDF)</a>
+
+      <p class="fine">Simulasi bersifat estimasi. Penawaran resmi menyesuaikan hasil survei lokasi dan ketersediaan unit pada tanggal yang diminta.</p>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">BUMI KONSTRUKSI</div>
+        <p class="footer-about">Penyewaan alat berat untuk proyek jalan, pelabuhan, dan tambang di Jawa Timur.</p>
+      </div>
+      <div>
+        <h4>Alat berat</h4>
+        <ul>
+          
+                      <li><a href="alat-berat-excavator.html">Excavator</a></li>
+                      <li><a href="alat-berat-bulldozer.html">Bulldozer</a></li>
+                      <li><a href="alat-berat-forklift.html">Forklift</a></li>
+                      <li><a href="alat-berat-dump-truck.html">Dump truck</a></li>
+                      <li><a href="alat-berat-attachment.html">Attachment</a></li>
+                      <li><a href="alat-berat-vibro-roller.html">Vibro roller</a></li>
+                      <li><a href="alat-berat-mobile-crane.html">Mobile crane</a></li>
+                  </ul>
+      </div>
+      <div>
+        <h4>Layanan</h4>
+        <ul>
+          <li><a href="simulasi-biaya.html">Simulasi biaya</a></li>
+          <li><a href="ajukan-sewa.html">Ajukan sewa</a></li>
+          <li><a href="kontak.html">Penawaran paket proyek</a></li>
+          <li><a href="kontak.html">Surat dukungan alat</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="tel:+6281234567890">0322-451-2200</a></li>
+          <li><a href="https://wa.me/6281234567890" rel="noopener">WhatsApp dispatch</a></li>
+          <li><a href="kontak.html">Empat pool &amp; alamat</a></li>
+          <li>Senin–Sabtu 07.00–17.00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 PT Bumi Konstruksi Nusantara</span>
+      <span>NIB · SBU · SIUJK aktif</span>
+      <span>Jl. Raya Deandels KM 12, Brondong, Lamongan 62263</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+  <script src="assets/js/pricing.js"></script>
+<script>window.Pricing.configure({"biaya":{"operatorPerHari":450000,"mobilisasiDasar":950000,"mobilisasiPerKm":25000,"mobilisasiKmGratis":30,"ppn":0.11,"ppnAktif":true,"shift2":0.3,"minHariHarian":3},"area":[{"value":"lamongan","label":"Brondong, Lamongan","km":18},{"value":"lamongan-kota","label":"Lamongan kota","km":28},{"value":"gresik","label":"Gresik","km":45},{"value":"tuban","label":"Tuban","km":90},{"value":"surabaya","label":"Surabaya","km":90},{"value":"luar","label":"Luar area \u2014 nego","km":160}],"unit":[{"key":"komatsu-pc200-8","nama":"Excavator Komatsu PC200-8","kategori":"excavator","tarif":{"h":8500000,"m":51000000,"b":175000000},"hemat":31},{"key":"kubota-u-35","nama":"Excavator Mini Kubota U-35","kategori":"excavator","tarif":{"h":2900000,"m":17400000,"b":62000000},"hemat":29},{"key":"komatsu-d65e-12","nama":"Bulldozer Komatsu D65E-12","kategori":"bulldozer","tarif":{"h":12500000,"m":75000000,"b":260000000},"hemat":31},{"key":"toyota-3-ton-diesel","nama":"Forklift Toyota 3 Ton Diesel","kategori":"forklift","tarif":{"h":1200000,"m":7200000,"b":25000000},"hemat":31},{"key":"hino-fm260","nama":"Dump Truck Hino FM260 20 m\u00b3","kategori":"dump-truck","tarif":{"h":1750000,"m":10500000,"b":37000000},"hemat":30},{"key":"kato-nk-250","nama":"Mobile Crane Kato NK-250","kategori":"mobile-crane","tarif":{"h":9800000,"m":58800000,"b":205000000},"hemat":30},{"key":"sakai-sv512","nama":"Vibro Roller Sakai SV512","kategori":"vibro-roller","tarif":{"h":3400000,"m":20400000,"b":72000000},"hemat":29},{"key":"soosan-sb81","nama":"Attachment Breaker Soosan SB81","kategori":"attachment","tarif":{"h":1200000,"m":null,"b":null},"hemat":null}]});</script>
+  <script>window.AJUKAN_URL = "http:\/\/localhost\/ajukan-sewa";</script>
+  <script src="assets/js/simulasi.js"></script>
+</body>
+</html>

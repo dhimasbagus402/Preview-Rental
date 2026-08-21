@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sewa Alat Berat di Jawa Timur — PT Bumi Konstruksi Nusantara</title>
+<meta name="description" content="Penyewaan alat berat untuk proyek jalan, pelabuhan, dan tambang di Jawa Timur.">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi is-aktif" href="index.html" aria-current="page">Situs</a><a class="demo-sisi" href="admin.html">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+<a class="skip-link" href="#main">Lompat ke konten</a>
+
+  
+  <p class="pita-demo" role="note">Situs contoh. Nama perusahaan, alamat, nomor telepon, titik peta, dan seluruh tarif di sini adalah data karangan untuk keperluan demonstrasi.</p>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="index.html">BUMI KONSTRUKSI</a>
+    <input type="checkbox" id="navtoggle" class="nav-toggle">
+    <label class="nav-burger" for="navtoggle" aria-label="Buka menu navigasi">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+    </label>
+    <nav class="nav-links" aria-label="Navigasi utama">
+      <a href="index.html" >Beranda</a>
+      <a href="alat-berat.html"  aria-current="page" >Alat Berat</a>
+      <a href="simulasi-biaya.html" >Simulasi Biaya</a>
+      <a href="kontak.html" >Kontak</a>
+      <a href="ajukan-sewa.html" class="btn btn-primary" style="margin-left:8px">Ajukan Sewa</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Ganti ke mode gelap">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">  <section>
+    <div class="wrap" style="padding-top:28px;padding-bottom:18px">
+      <h1 style="font-size:32px;margin:0 0 6px">Sewa alat berat di Jawa Timur</h1>
+      <p class="lede" style="margin:0">Pilih unit, tentukan tanggal, dan ajukan sewa. Harga sudah termasuk operator dan servis; mobilisasi dihitung dari pool terdekat.</p>
+    </div>
+
+    
+    
+    <div class="wrap">
+      <form method="GET" action="alat-berat" class="filters" style="align-items:flex-end">
+                  <input type="hidden" name="kategori" value="attachment">
+                <div class="field" style="width:170px">
+          <label for="mulai">Mulai sewa</label>
+          <input class="input" type="date" id="mulai" name="mulai" value="">
+        </div>
+        <div class="field" style="width:170px">
+          <label for="selesai">Selesai</label>
+          <input class="input" type="date" id="selesai" name="selesai" value="">
+        </div>
+        <div class="field" style="width:170px">
+          <label for="pool">Pool</label>
+          <select class="input" id="pool" name="pool">
+            <option value="">Semua pool</option>
+                          <option value="lamongan" >Lamongan</option>
+                          <option value="gresik" >Gresik</option>
+                          <option value="tuban" >Tuban</option>
+                          <option value="surabaya" >Surabaya</option>
+                      </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="padding:9px 16px">Terapkan</button>
+                  <a href="alat-berat.html" class="btn btn-secondary" style="padding:9px 16px">Reset semua</a>
+              </form>
+
+              <p class="text-muted" style="font-size:12.5px;margin:0 0 14px">
+          Tarif di bawah berlaku hari ini. Isi tanggal di atas untuk melihat
+          tarif dan ketersediaan pada periode sewa Anda.
+        </p>
+      
+      
+      <nav class="filters" aria-label="Saring menurut kategori">
+        <a class="btn chip btn-secondary"
+           href="alat-berat.html"
+           >Semua</a>
+
+                  <a class="btn chip btn-secondary"
+             href="alat-berat-excavator.html"
+             >Excavator</a>
+                  <a class="btn chip btn-secondary"
+             href="alat-berat-bulldozer.html"
+             >Bulldozer</a>
+                  <a class="btn chip btn-secondary"
+             href="alat-berat-forklift.html"
+             >Forklift</a>
+                  <a class="btn chip btn-secondary"
+             href="alat-berat-dump-truck.html"
+             >Dump truck</a>
+                  <a class="btn chip btn-secondary"
+             href="alat-berat-mobile-crane.html"
+             >Mobile crane</a>
+                  <a class="btn chip btn-secondary"
+             href="alat-berat-vibro-roller.html"
+             >Vibro roller</a>
+                  <a class="btn chip btn-primary"
+             href="alat-berat-attachment.html"
+              aria-current="true" >Attachment</a>
+              </nav>
+    </div>
+
+    <div class="wrap rule-top">
+      <p class="text-muted" style="font-size:12px;margin:14px 0 0">
+                  Menampilkan 1 dari 8 jenis alat
+              </p>
+      <div class="catalog-grid" id="katalog">
+                  <article class="unit-card" data-kategori="attachment" data-pool="lamongan">
+            <div class="ph grayscale">
+                              <img src="uploads/preview/breaker-001-baYbwDwe.webp" alt="Attachment Breaker Soosan SB81" loading="lazy">
+                            <span>Foto Soosan SB81</span>
+            </div>
+            <div class="unit-body">
+              <div class="unit-top">
+                <span class="card-kicker">Attachment</span>
+                                  <span class="tag tag-accent">3 dari 3 siap</span>
+                              </div>
+              <h2 class="card-title" style="margin-bottom:6px">Soosan SB81</h2>
+              <p class="unit-desc"></p>
+              <div class="unit-price"><b>Rp 1,2 jt</b><span>/hari</span></div>
+              <a href="unit-soosan-sb81.html" class="btn btn-primary btn-block">Lihat &amp; ajukan sewa</a>
+              <a href="simulasi-soosan-sb81.html" class="btn btn-secondary btn-block">Hitung biaya</a>
+            </div>
+          </article>
+        
+        <aside class="promo-card">
+          <div class="eyebrow">Butuh beberapa unit?</div>
+          <h2>Paket proyek, harga khusus.</h2>
+          <p>Sewa 3 unit atau lebih untuk durasi di atas 1 bulan — kami kirim penawaran paket beserta jadwal mobilisasi bertahap.</p>
+          <a href="kontak.html" class="btn btn-invert" style="justify-content:flex-start">Minta penawaran paket</a>
+        </aside>
+      </div>
+
+          </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">BUMI KONSTRUKSI</div>
+        <p class="footer-about">Penyewaan alat berat untuk proyek jalan, pelabuhan, dan tambang di Jawa Timur.</p>
+      </div>
+      <div>
+        <h4>Alat berat</h4>
+        <ul>
+          
+                      <li><a href="alat-berat-excavator.html">Excavator</a></li>
+                      <li><a href="alat-berat-bulldozer.html">Bulldozer</a></li>
+                      <li><a href="alat-berat-forklift.html">Forklift</a></li>
+                      <li><a href="alat-berat-dump-truck.html">Dump truck</a></li>
+                      <li><a href="alat-berat-attachment.html">Attachment</a></li>
+                      <li><a href="alat-berat-vibro-roller.html">Vibro roller</a></li>
+                      <li><a href="alat-berat-mobile-crane.html">Mobile crane</a></li>
+                  </ul>
+      </div>
+      <div>
+        <h4>Layanan</h4>
+        <ul>
+          <li><a href="simulasi-biaya.html">Simulasi biaya</a></li>
+          <li><a href="ajukan-sewa.html">Ajukan sewa</a></li>
+          <li><a href="kontak.html">Penawaran paket proyek</a></li>
+          <li><a href="kontak.html">Surat dukungan alat</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="tel:+6281234567890">0322-451-2200</a></li>
+          <li><a href="https://wa.me/6281234567890" rel="noopener">WhatsApp dispatch</a></li>
+          <li><a href="kontak.html">Empat pool &amp; alamat</a></li>
+          <li>Senin–Sabtu 07.00–17.00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 PT Bumi Konstruksi Nusantara</span>
+      <span>NIB · SBU · SIUJK aktif</span>
+      <span>Jl. Raya Deandels KM 12, Brondong, Lamongan 62263</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/theme.js"></script>
+  <script src="assets/js/pricing.js"></script>
+<script>window.Pricing.configure({"biaya":{"operatorPerHari":450000,"mobilisasiDasar":950000,"mobilisasiPerKm":25000,"mobilisasiKmGratis":30,"ppn":0.11,"ppnAktif":true,"shift2":0.3,"minHariHarian":3},"area":[{"value":"lamongan","label":"Brondong, Lamongan","km":18},{"value":"lamongan-kota","label":"Lamongan kota","km":28},{"value":"gresik","label":"Gresik","km":45},{"value":"tuban","label":"Tuban","km":90},{"value":"surabaya","label":"Surabaya","km":90},{"value":"luar","label":"Luar area \u2014 nego","km":160}],"unit":[{"key":"soosan-sb81","nama":"Attachment Breaker Soosan SB81","kategori":"attachment","tarif":{"h":1200000,"m":null,"b":null},"hemat":null}]});</script>
+</body>
+</html>

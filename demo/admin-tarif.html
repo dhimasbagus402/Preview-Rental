@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarif alat — Sewa Alat Berat</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<script>try{var t=localStorage.getItem('sab-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="assets/demo.css"><script src="assets/demo.js" defer></script></head>
+<body class="admin"><div class="demo-pita" role="note"><span class="demo-cap">Demo statis</span><span class="demo-sisi-grup"><a class="demo-sisi" href="index.html">Situs</a><a class="demo-sisi is-aktif" href="admin.html" aria-current="page">Panel admin</a></span><span class="demo-ket">Data contoh yang dibekukan — menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span><a class="demo-keluar" href="../index.html">Tentang aplikasi ini →</a></div>
+
+<header class="admin-bar">
+  <div class="admin-brand">Panel Admin<small>Rifa Andriani · Super Admin</small></div>
+  <a class="btn btn-secondary" href="index.html" target="_blank" rel="noopener">Lihat situs</a>
+  <button class="theme-toggle" type="button" aria-label="Ganti mode tampilan">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+  </button>
+  <form method="POST" action="admin/keluar" style="margin:0">
+        <button type="submit" class="btn btn-secondary">Keluar</button>
+  </form>
+</header>
+
+<nav class="admin-tabs" aria-label="Menu admin">
+  <a href="admin.html" >Dashboard</a>
+      <a href="admin-rental.html" >Rental</a>
+        <a href="admin-alat.html" >Alat</a>
+    <a href="admin-kategori.html" >Kategori &amp; pool</a>
+        <a href="admin-tarif.html"  aria-current="page" >Tarif alat</a>
+    <a href="admin-biaya.html" >Biaya &amp; pajak</a>
+        <a href="admin-pesan.html" >Pesan</a>
+        <a href="admin-perusahaan.html" >Perusahaan</a>
+        <a href="admin-pengguna.html" >Pengguna</a>
+        <a href="admin-aktivitas.html" >Aktivitas</a>
+  </nav>
+
+<main class="admin-main">
+    
+  <h1 class="admin-h1">Tarif alat</h1>
+<p class="admin-sub">
+  Tarif diisi per unit, dalam rupiah penuh (contoh <code>8500000</code>).
+  Menyimpan tarif baru <strong>tidak menimpa</strong> tarif lama: baris lama ditutup
+  dan baris baru dibuat mulai tanggal berlaku, sehingga rental yang sudah dibuat
+  tetap memakai harga saat transaksinya terjadi.
+</p>
+
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Soosan SB81</h3>
+      <span class="text-muted" style="font-size:12px">3 unit fisik</span>
+      <span class="spacer"></span>
+    </div>
+
+    <form method="POST" action="admin/tarif/soosan-sb81">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="d-soosan-sb81">Tarif harian</label>
+          <input class="input" id="d-soosan-sb81" name="price_per_day" type="text"
+                 inputmode="numeric" data-uang
+                 value="1.200.000" required>
+        </div>
+        <div class="field">
+          <label for="w-soosan-sb81">Tarif mingguan</label>
+          <input class="input" id="w-soosan-sb81" name="price_per_week" type="text"
+                 inputmode="numeric" data-uang
+                 value="">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="m-soosan-sb81">Tarif bulanan</label>
+          <input class="input" id="m-soosan-sb81" name="price_per_month" type="text"
+                 inputmode="numeric" data-uang
+                 value="">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="min-soosan-sb81">Minimum hari</label>
+          <input class="input" id="min-soosan-sb81" name="min_days" type="number" min="1" max="365"
+                 value="1" required>
+          <span class="suffix">Sewa lebih pendek tetap ditagih sejumlah ini.</span>
+        </div>
+        <div class="field">
+          <label for="eff-soosan-sb81">Berlaku mulai</label>
+          <input class="input" id="eff-soosan-sb81" name="effective_from" type="date"
+                 value="2026-08-21" required>
+          <span class="suffix">Tarif lama disimpan sebagai riwayat.</span>
+        </div>
+      </div>
+
+      <div class="kotak-hemat">
+        <label class="radio">
+          <input type="checkbox" name="hemat_aktif" value="1"
+                 checked><span class="dot"></span>
+          Tampilkan label <strong>&ldquo;Hemat&rdquo;</strong> pada tarif bulanan
+        </label>
+        <div class="field" style="max-width:220px;margin-top:10px">
+          <label for="hemat-soosan-sb81">Nilai hemat (%)</label>
+          <input class="input" id="hemat-soosan-sb81" name="hemat_persen" type="number"
+                 min="1" max="99" placeholder="otomatis"
+                 value="">
+          <span class="suffix">
+            Kosongkan untuk menghitung sendiri dari selisih tarif bulanan
+            terhadap 30&times; tarif harian
+                          — saat ini tidak ada penghematan.
+                      </span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="submit">Simpan tarif</button>
+      </div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Komatsu D65E-12</h3>
+      <span class="text-muted" style="font-size:12px">3 unit fisik</span>
+      <span class="spacer"></span>
+    </div>
+
+    <form method="POST" action="admin/tarif/komatsu-d65e-12">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="d-komatsu-d65e-12">Tarif harian</label>
+          <input class="input" id="d-komatsu-d65e-12" name="price_per_day" type="text"
+                 inputmode="numeric" data-uang
+                 value="12.500.000" required>
+        </div>
+        <div class="field">
+          <label for="w-komatsu-d65e-12">Tarif mingguan</label>
+          <input class="input" id="w-komatsu-d65e-12" name="price_per_week" type="text"
+                 inputmode="numeric" data-uang
+                 value="75.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="m-komatsu-d65e-12">Tarif bulanan</label>
+          <input class="input" id="m-komatsu-d65e-12" name="price_per_month" type="text"
+                 inputmode="numeric" data-uang
+                 value="260.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="min-komatsu-d65e-12">Minimum hari</label>
+          <input class="input" id="min-komatsu-d65e-12" name="min_days" type="number" min="1" max="365"
+                 value="3" required>
+          <span class="suffix">Sewa lebih pendek tetap ditagih sejumlah ini.</span>
+        </div>
+        <div class="field">
+          <label for="eff-komatsu-d65e-12">Berlaku mulai</label>
+          <input class="input" id="eff-komatsu-d65e-12" name="effective_from" type="date"
+                 value="2026-08-21" required>
+          <span class="suffix">Tarif lama disimpan sebagai riwayat.</span>
+        </div>
+      </div>
+
+      <div class="kotak-hemat">
+        <label class="radio">
+          <input type="checkbox" name="hemat_aktif" value="1"
+                 checked><span class="dot"></span>
+          Tampilkan label <strong>&ldquo;Hemat&rdquo;</strong> pada tarif bulanan
+        </label>
+        <div class="field" style="max-width:220px;margin-top:10px">
+          <label for="hemat-komatsu-d65e-12">Nilai hemat (%)</label>
+          <input class="input" id="hemat-komatsu-d65e-12" name="hemat_persen" type="number"
+                 min="1" max="99" placeholder="otomatis"
+                 value="">
+          <span class="suffix">
+            Kosongkan untuk menghitung sendiri dari selisih tarif bulanan
+            terhadap 30&times; tarif harian
+                          — saat ini <strong>31%</strong>.
+                      </span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="submit">Simpan tarif</button>
+      </div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Hino FM260</h3>
+      <span class="text-muted" style="font-size:12px">5 unit fisik</span>
+      <span class="spacer"></span>
+    </div>
+
+    <form method="POST" action="admin/tarif/hino-fm260">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="d-hino-fm260">Tarif harian</label>
+          <input class="input" id="d-hino-fm260" name="price_per_day" type="text"
+                 inputmode="numeric" data-uang
+                 value="1.750.000" required>
+        </div>
+        <div class="field">
+          <label for="w-hino-fm260">Tarif mingguan</label>
+          <input class="input" id="w-hino-fm260" name="price_per_week" type="text"
+                 inputmode="numeric" data-uang
+                 value="10.500.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="m-hino-fm260">Tarif bulanan</label>
+          <input class="input" id="m-hino-fm260" name="price_per_month" type="text"
+                 inputmode="numeric" data-uang
+                 value="37.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="min-hino-fm260">Minimum hari</label>
+          <input class="input" id="min-hino-fm260" name="min_days" type="number" min="1" max="365"
+                 value="1" required>
+          <span class="suffix">Sewa lebih pendek tetap ditagih sejumlah ini.</span>
+        </div>
+        <div class="field">
+          <label for="eff-hino-fm260">Berlaku mulai</label>
+          <input class="input" id="eff-hino-fm260" name="effective_from" type="date"
+                 value="2026-08-21" required>
+          <span class="suffix">Tarif lama disimpan sebagai riwayat.</span>
+        </div>
+      </div>
+
+      <div class="kotak-hemat">
+        <label class="radio">
+          <input type="checkbox" name="hemat_aktif" value="1"
+                 checked><span class="dot"></span>
+          Tampilkan label <strong>&ldquo;Hemat&rdquo;</strong> pada tarif bulanan
+        </label>
+        <div class="field" style="max-width:220px;margin-top:10px">
+          <label for="hemat-hino-fm260">Nilai hemat (%)</label>
+          <input class="input" id="hemat-hino-fm260" name="hemat_persen" type="number"
+                 min="1" max="99" placeholder="otomatis"
+                 value="">
+          <span class="suffix">
+            Kosongkan untuk menghitung sendiri dari selisih tarif bulanan
+            terhadap 30&times; tarif harian
+                          — saat ini <strong>30%</strong>.
+                      </span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="submit">Simpan tarif</button>
+      </div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Toyota 3 Ton Diesel</h3>
+      <span class="text-muted" style="font-size:12px">3 unit fisik</span>
+      <span class="spacer"></span>
+    </div>
+
+    <form method="POST" action="admin/tarif/toyota-3-ton-diesel">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="d-toyota-3-ton-diesel">Tarif harian</label>
+          <input class="input" id="d-toyota-3-ton-diesel" name="price_per_day" type="text"
+                 inputmode="numeric" data-uang
+                 value="1.200.000" required>
+        </div>
+        <div class="field">
+          <label for="w-toyota-3-ton-diesel">Tarif mingguan</label>
+          <input class="input" id="w-toyota-3-ton-diesel" name="price_per_week" type="text"
+                 inputmode="numeric" data-uang
+                 value="7.200.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="m-toyota-3-ton-diesel">Tarif bulanan</label>
+          <input class="input" id="m-toyota-3-ton-diesel" name="price_per_month" type="text"
+                 inputmode="numeric" data-uang
+                 value="25.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="min-toyota-3-ton-diesel">Minimum hari</label>
+          <input class="input" id="min-toyota-3-ton-diesel" name="min_days" type="number" min="1" max="365"
+                 value="1" required>
+          <span class="suffix">Sewa lebih pendek tetap ditagih sejumlah ini.</span>
+        </div>
+        <div class="field">
+          <label for="eff-toyota-3-ton-diesel">Berlaku mulai</label>
+          <input class="input" id="eff-toyota-3-ton-diesel" name="effective_from" type="date"
+                 value="2026-08-21" required>
+          <span class="suffix">Tarif lama disimpan sebagai riwayat.</span>
+        </div>
+      </div>
+
+      <div class="kotak-hemat">
+        <label class="radio">
+          <input type="checkbox" name="hemat_aktif" value="1"
+                 checked><span class="dot"></span>
+          Tampilkan label <strong>&ldquo;Hemat&rdquo;</strong> pada tarif bulanan
+        </label>
+        <div class="field" style="max-width:220px;margin-top:10px">
+          <label for="hemat-toyota-3-ton-diesel">Nilai hemat (%)</label>
+          <input class="input" id="hemat-toyota-3-ton-diesel" name="hemat_persen" type="number"
+                 min="1" max="99" placeholder="otomatis"
+                 value="">
+          <span class="suffix">
+            Kosongkan untuk menghitung sendiri dari selisih tarif bulanan
+            terhadap 30&times; tarif harian
+                          — saat ini <strong>31%</strong>.
+                      </span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="submit">Simpan tarif</button>
+      </div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Kato NK-250</h3>
+      <span class="text-muted" style="font-size:12px">2 unit fisik</span>
+      <span class="spacer"></span>
+    </div>
+
+    <form method="POST" action="admin/tarif/kato-nk-250">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="d-kato-nk-250">Tarif harian</label>
+          <input class="input" id="d-kato-nk-250" name="price_per_day" type="text"
+                 inputmode="numeric" data-uang
+                 value="9.800.000" required>
+        </div>
+        <div class="field">
+          <label for="w-kato-nk-250">Tarif mingguan</label>
+          <input class="input" id="w-kato-nk-250" name="price_per_week" type="text"
+                 inputmode="numeric" data-uang
+                 value="58.800.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="m-kato-nk-250">Tarif bulanan</label>
+          <input class="input" id="m-kato-nk-250" name="price_per_month" type="text"
+                 inputmode="numeric" data-uang
+                 value="205.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="min-kato-nk-250">Minimum hari</label>
+          <input class="input" id="min-kato-nk-250" name="min_days" type="number" min="1" max="365"
+                 value="3" required>
+          <span class="suffix">Sewa lebih pendek tetap ditagih sejumlah ini.</span>
+        </div>
+        <div class="field">
+          <label for="eff-kato-nk-250">Berlaku mulai</label>
+          <input class="input" id="eff-kato-nk-250" name="effective_from" type="date"
+                 value="2026-08-21" required>
+          <span class="suffix">Tarif lama disimpan sebagai riwayat.</span>
+        </div>
+      </div>
+
+      <div class="kotak-hemat">
+        <label class="radio">
+          <input type="checkbox" name="hemat_aktif" value="1"
+                 checked><span class="dot"></span>
+          Tampilkan label <strong>&ldquo;Hemat&rdquo;</strong> pada tarif bulanan
+        </label>
+        <div class="field" style="max-width:220px;margin-top:10px">
+          <label for="hemat-kato-nk-250">Nilai hemat (%)</label>
+          <input class="input" id="hemat-kato-nk-250" name="hemat_persen" type="number"
+                 min="1" max="99" placeholder="otomatis"
+                 value="">
+          <span class="suffix">
+            Kosongkan untuk menghitung sendiri dari selisih tarif bulanan
+            terhadap 30&times; tarif harian
+                          — saat ini <strong>30%</strong>.
+                      </span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="submit">Simpan tarif</button>
+      </div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Komatsu PC200-8</h3>
+      <span class="text-muted" style="font-size:12px">6 unit fisik</span>
+      <span class="spacer"></span>
+    </div>
+
+    <form method="POST" action="admin/tarif/komatsu-pc200-8">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="d-komatsu-pc200-8">Tarif harian</label>
+          <input class="input" id="d-komatsu-pc200-8" name="price_per_day" type="text"
+                 inputmode="numeric" data-uang
+                 value="8.500.000" required>
+        </div>
+        <div class="field">
+          <label for="w-komatsu-pc200-8">Tarif mingguan</label>
+          <input class="input" id="w-komatsu-pc200-8" name="price_per_week" type="text"
+                 inputmode="numeric" data-uang
+                 value="51.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="m-komatsu-pc200-8">Tarif bulanan</label>
+          <input class="input" id="m-komatsu-pc200-8" name="price_per_month" type="text"
+                 inputmode="numeric" data-uang
+                 value="175.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="min-komatsu-pc200-8">Minimum hari</label>
+          <input class="input" id="min-komatsu-pc200-8" name="min_days" type="number" min="1" max="365"
+                 value="3" required>
+          <span class="suffix">Sewa lebih pendek tetap ditagih sejumlah ini.</span>
+        </div>
+        <div class="field">
+          <label for="eff-komatsu-pc200-8">Berlaku mulai</label>
+          <input class="input" id="eff-komatsu-pc200-8" name="effective_from" type="date"
+                 value="2026-08-21" required>
+          <span class="suffix">Tarif lama disimpan sebagai riwayat.</span>
+        </div>
+      </div>
+
+      <div class="kotak-hemat">
+        <label class="radio">
+          <input type="checkbox" name="hemat_aktif" value="1"
+                 checked><span class="dot"></span>
+          Tampilkan label <strong>&ldquo;Hemat&rdquo;</strong> pada tarif bulanan
+        </label>
+        <div class="field" style="max-width:220px;margin-top:10px">
+          <label for="hemat-komatsu-pc200-8">Nilai hemat (%)</label>
+          <input class="input" id="hemat-komatsu-pc200-8" name="hemat_persen" type="number"
+                 min="1" max="99" placeholder="otomatis"
+                 value="">
+          <span class="suffix">
+            Kosongkan untuk menghitung sendiri dari selisih tarif bulanan
+            terhadap 30&times; tarif harian
+                          — saat ini <strong>31%</strong>.
+                      </span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="submit">Simpan tarif</button>
+      </div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Sakai SV512</h3>
+      <span class="text-muted" style="font-size:12px">3 unit fisik</span>
+      <span class="spacer"></span>
+    </div>
+
+    <form method="POST" action="admin/tarif/sakai-sv512">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="d-sakai-sv512">Tarif harian</label>
+          <input class="input" id="d-sakai-sv512" name="price_per_day" type="text"
+                 inputmode="numeric" data-uang
+                 value="3.400.000" required>
+        </div>
+        <div class="field">
+          <label for="w-sakai-sv512">Tarif mingguan</label>
+          <input class="input" id="w-sakai-sv512" name="price_per_week" type="text"
+                 inputmode="numeric" data-uang
+                 value="20.400.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="m-sakai-sv512">Tarif bulanan</label>
+          <input class="input" id="m-sakai-sv512" name="price_per_month" type="text"
+                 inputmode="numeric" data-uang
+                 value="72.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="min-sakai-sv512">Minimum hari</label>
+          <input class="input" id="min-sakai-sv512" name="min_days" type="number" min="1" max="365"
+                 value="2" required>
+          <span class="suffix">Sewa lebih pendek tetap ditagih sejumlah ini.</span>
+        </div>
+        <div class="field">
+          <label for="eff-sakai-sv512">Berlaku mulai</label>
+          <input class="input" id="eff-sakai-sv512" name="effective_from" type="date"
+                 value="2026-08-21" required>
+          <span class="suffix">Tarif lama disimpan sebagai riwayat.</span>
+        </div>
+      </div>
+
+      <div class="kotak-hemat">
+        <label class="radio">
+          <input type="checkbox" name="hemat_aktif" value="1"
+                 checked><span class="dot"></span>
+          Tampilkan label <strong>&ldquo;Hemat&rdquo;</strong> pada tarif bulanan
+        </label>
+        <div class="field" style="max-width:220px;margin-top:10px">
+          <label for="hemat-sakai-sv512">Nilai hemat (%)</label>
+          <input class="input" id="hemat-sakai-sv512" name="hemat_persen" type="number"
+                 min="1" max="99" placeholder="otomatis"
+                 value="">
+          <span class="suffix">
+            Kosongkan untuk menghitung sendiri dari selisih tarif bulanan
+            terhadap 30&times; tarif harian
+                          — saat ini <strong>29%</strong>.
+                      </span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="submit">Simpan tarif</button>
+      </div>
+    </form>
+
+      </div>
+  <div class="admin-card">
+    <div class="unit-head">
+      <h3>Kubota U-35</h3>
+      <span class="text-muted" style="font-size:12px">4 unit fisik</span>
+      <span class="spacer"></span>
+    </div>
+
+    <form method="POST" action="admin/tarif/kubota-u-35">
+            <div class="admin-grid">
+        <div class="field">
+          <label for="d-kubota-u-35">Tarif harian</label>
+          <input class="input" id="d-kubota-u-35" name="price_per_day" type="text"
+                 inputmode="numeric" data-uang
+                 value="2.900.000" required>
+        </div>
+        <div class="field">
+          <label for="w-kubota-u-35">Tarif mingguan</label>
+          <input class="input" id="w-kubota-u-35" name="price_per_week" type="text"
+                 inputmode="numeric" data-uang
+                 value="17.400.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="m-kubota-u-35">Tarif bulanan</label>
+          <input class="input" id="m-kubota-u-35" name="price_per_month" type="text"
+                 inputmode="numeric" data-uang
+                 value="62.000.000">
+          <span class="suffix">Kosongkan bila skema ini tidak ditawarkan.</span>
+        </div>
+        <div class="field">
+          <label for="min-kubota-u-35">Minimum hari</label>
+          <input class="input" id="min-kubota-u-35" name="min_days" type="number" min="1" max="365"
+                 value="2" required>
+          <span class="suffix">Sewa lebih pendek tetap ditagih sejumlah ini.</span>
+        </div>
+        <div class="field">
+          <label for="eff-kubota-u-35">Berlaku mulai</label>
+          <input class="input" id="eff-kubota-u-35" name="effective_from" type="date"
+                 value="2026-08-21" required>
+          <span class="suffix">Tarif lama disimpan sebagai riwayat.</span>
+        </div>
+      </div>
+
+      <div class="kotak-hemat">
+        <label class="radio">
+          <input type="checkbox" name="hemat_aktif" value="1"
+                 checked><span class="dot"></span>
+          Tampilkan label <strong>&ldquo;Hemat&rdquo;</strong> pada tarif bulanan
+        </label>
+        <div class="field" style="max-width:220px;margin-top:10px">
+          <label for="hemat-kubota-u-35">Nilai hemat (%)</label>
+          <input class="input" id="hemat-kubota-u-35" name="hemat_persen" type="number"
+                 min="1" max="99" placeholder="otomatis"
+                 value="">
+          <span class="suffix">
+            Kosongkan untuk menghitung sendiri dari selisih tarif bulanan
+            terhadap 30&times; tarif harian
+                          — saat ini <strong>29%</strong>.
+                      </span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="submit">Simpan tarif</button>
+      </div>
+    </form>
+
+      </div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/admin-format.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>
