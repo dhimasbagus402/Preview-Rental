@@ -1,0 +1,443 @@
+/* Panel admin — memakai token yang sama dengan situs. */
+
+body.admin { background: var(--color-surface); }
+
+.admin-bar {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 12px 20px;
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-divider);
+}
+.admin-brand { font: 800 15px var(--font-heading); margin-right: auto; }
+.admin-brand small { display: block; font: 400 11px var(--font-body); opacity: .78; }
+.admin-status { font-size: 12px; opacity: .75; }
+.admin-status.is-dirty { color: var(--color-accent); font-weight: 600; opacity: 1; }
+
+.admin-warn {
+  background: var(--color-accent-100);
+  border-bottom: 1px solid var(--color-divider);
+  border-left: 4px solid var(--color-accent);
+  padding: 12px 20px;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+.admin-warn b { font-family: var(--font-heading); }
+
+.admin-tabs {
+  display: flex; flex-wrap: wrap; gap: 0;
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-divider);
+  padding: 0 20px;
+}
+.admin-tabs button {
+  border: 0; background: none; cursor: pointer;
+  font: 800 12px var(--font-heading);
+  letter-spacing: .04em; text-transform: uppercase;
+  color: inherit; padding: 13px 16px;
+  border-bottom: 3px solid transparent;
+}
+.admin-tabs button:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); }
+.admin-tabs button[aria-selected="true"] {
+  border-bottom-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.admin-main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
+.admin-panel[hidden] { display: none; }
+.admin-panel > h2 { font-size: 20px; margin: 0 0 4px; }
+.admin-panel > p.hint-text { font-size: 13px; opacity: .7; margin: 0 0 18px; max-width: 70ch; }
+
+.admin-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.admin-card > h3 {
+  font: 800 12px var(--font-heading);
+  letter-spacing: .08em; text-transform: uppercase;
+  opacity: .65; margin: 0 0 14px;
+}
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.admin-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.admin-grid .field.wide { grid-column: 1 / -1; }
+.field .suffix { font-size: 11px; opacity: .78; margin-top: 3px; display: block; }
+
+.unit-head {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-divider);
+}
+.unit-head h3 { margin: 0; font: 800 15px var(--font-heading); letter-spacing: 0; text-transform: none; opacity: 1; }
+.unit-head .spacer { margin-left: auto; }
+.btn-danger { color: #b3261e; border-color: color-mix(in srgb, #b3261e 40%, transparent); }
+html[data-theme="dark"] .btn-danger { color: #ffb4ab; }
+.btn-danger:hover { background: color-mix(in srgb, #b3261e 12%, transparent); }
+
+.admin-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+
+.uji {
+  position: sticky; bottom: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-top: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 20px;
+}
+.uji h3 { font: 800 12px var(--font-heading); letter-spacing: .08em; text-transform: uppercase; opacity: .65; margin: 0 0 12px; }
+.uji-out { margin-top: 12px; font-size: 13px; }
+.uji-row { display: flex; justify-content: space-between; gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--color-divider); }
+.uji-row:last-child { border-bottom: 0; font: 800 15px var(--font-heading); padding-top: 9px; }
+.uji-row:last-child span:last-child { color: var(--color-accent); }
+
+.admin-note { font-size: 12px; opacity: .7; line-height: 1.6; margin-top: 10px; }
+.admin-empty { font-size: 13px; opacity: .7; padding: 10px 0; }
+
+@media (max-width: 640px) {
+  .admin-bar { gap: 8px; }
+  .admin-brand { width: 100%; margin-right: 0; }
+}
+
+/* ── tambahan untuk panel admin Blade ─────────────────────────────────── */
+.admin-bar .btn { padding: 7px 14px; font-size: 13px; }
+.admin-tabs a {
+  font: 800 12px var(--font-heading);
+  letter-spacing: .04em; text-transform: uppercase;
+  color: inherit; text-decoration: none;
+  padding: 13px 16px; border-bottom: 3px solid transparent;
+}
+.admin-tabs a:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); }
+.admin-tabs a[aria-current="page"] { border-bottom-color: var(--color-accent); color: var(--color-accent); }
+
+.admin-h1 { font-size: 24px; margin: 0 0 4px; }
+.admin-h2 { font-size: 17px; margin: 26px 0 12px; }
+/* Warna, bukan opacity: opacity pada induk ikut meredupkan tautan di
+   dalamnya, dan anak tidak bisa lebih pekat daripada induknya. */
+.admin-sub {
+  font-size: 13px; max-width: 74ch; margin: 0 0 18px;
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+}
+
+.admin-flash {
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-accent);
+  padding: 12px 14px; margin-bottom: 18px;
+  font-size: 13px; border-radius: var(--radius-md);
+}
+.admin-flash a { font-weight: 600; }
+.admin-flash ul { margin: 6px 0 0; padding-left: 18px; }
+.admin-flash.is-error { border-left-color: #b3261e; }
+html[data-theme="dark"] .admin-flash.is-error { border-left-color: #ffb4ab; }
+.admin-flash.is-alert { border-left-color: var(--color-accent); font-weight: 600; }
+
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.kpi {
+  background: var(--color-bg); border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md); padding: 16px;
+}
+.kpi.is-alert { border-color: var(--color-accent); box-shadow: inset 3px 0 0 var(--color-accent); }
+.kpi-wide { grid-column: 1 / -1; }
+.kpi-n { font: 800 26px var(--font-heading); letter-spacing: -.02em; color: var(--color-accent); }
+.kpi-l { font-size: 12px; opacity: .78; margin-top: 4px; }
+
+.badge {
+  display: inline-block; font: 800 10px var(--font-heading);
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: var(--radius-md);
+  background: var(--color-neutral-100); color: var(--color-neutral-800);
+}
+.badge-lg { font-size: 12px; padding: 7px 14px; }
+.badge-pending { background: var(--color-accent-100); color: var(--color-accent-800); }
+.badge-confirmed, .badge-active { background: var(--color-accent); color: var(--color-bg); }
+.badge-cancelled { background: #f3d7d5; color: #6b1c16; }
+html[data-theme="dark"] .badge-cancelled { background: #4a201c; color: #ffb4ab; }
+
+.filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip-link {
+  font: 800 12px var(--font-heading); text-decoration: none; color: inherit;
+  padding: 8px 14px; border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+}
+.chip-link:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); color: inherit; }
+.chip-link.is-on { background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent); }
+.chip-count { opacity: .72; font-weight: 400; }
+
+.detail-head { display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.detail-head .badge { margin-left: auto; }
+.back-link { font-size: 12.5px; text-decoration: none; }
+.aksi-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.aksi-row form { margin: 0; }
+.batal-form { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.batal-form .input { width: 230px; }
+
+.histori { margin-top: 14px; border-top: 1px solid var(--color-divider); padding-top: 12px; }
+.histori summary { cursor: pointer; font: 800 12px var(--font-heading); }
+
+.toggle-row { align-items: flex-start; gap: 10px; font-size: 14px; }
+.toggle-row .dot { margin-top: 2px; }
+
+.admin-login { display: grid; place-items: center; min-height: 100vh; padding: 20px; }
+.login-card {
+  width: min(380px, 100%); background: var(--color-bg);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+  padding: 28px;
+}
+.login-brand { font: 800 20px var(--font-heading); }
+.login-sub { font-size: 12.5px; opacity: .72; margin: 2px 0 20px; }
+
+/* Baris edit sebaris (kategori). */
+.baris-inline {
+  display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap;
+  padding-bottom: 12px;
+}
+.baris-inline.has-garis { border-bottom: 1px solid var(--color-divider); margin-bottom: 12px; }
+.baris-inline .field { margin: 0; }
+.sr { position: absolute; left: -9999px; }
+
+/* Kolom rupiah: angka rata kanan supaya digit ribuan mudah dibandingkan. */
+/* perataan diatur di blok 'perataan & tata letak kolom' di bawah */
+
+/* ── pagination ──────────────────────────────────────────────────────────── */
+.pager {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; flex-wrap: wrap; margin-top: 18px;
+}
+.pager-info { font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.pager-nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.pager-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 36px; padding: 7px 12px;
+  font: 800 12.5px var(--font-heading);
+  color: inherit; text-decoration: none;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+}
+.pager-btn:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); color: inherit; }
+.pager-btn.is-on { background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent); }
+.pager-gap { padding: 0 4px; color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+.pager-btn.is-off { opacity: .65; cursor: not-allowed; }
+
+/* ── perataan & tata letak kolom ─────────────────────────────────────────── */
+
+/* Semua isian rata kiri, termasuk kolom rupiah. */
+.admin input.input,
+.admin select.input,
+.admin textarea.input { text-align: left; }
+input[data-uang] { font-variant-numeric: tabular-nums; }
+
+/* Menyejajarkan ISIAN, bukan kotak field.
+   align-items:end menyejajarkan dasar kotak, sehingga field yang punya
+   keterangan di bawahnya justru terdorong naik. Yang benar: sel rata atas,
+   label diberi tinggi tetap supaya label satu baris dan dua baris sama
+   tingginya — dengan begitu semua input mulai pada garis yang sama. */
+.admin-grid { align-items: start; }
+.admin-grid .field { display: flex; flex-direction: column; }
+.admin-grid .field > label {
+  min-height: 2.6em;
+  display: flex; align-items: flex-end;
+  margin-bottom: 5px;
+}
+.admin-grid .field > .suffix { margin-top: 4px; }
+
+/* Baris berulang (area, spesifikasi) rata atas dan lebarnya proporsional. */
+.baris-ulang {
+  display: grid; grid-template-columns: minmax(200px, 3fr) minmax(110px, 1fr);
+  gap: 10px; align-items: end; margin-bottom: 8px;
+}
+.baris-ulang .field { margin: 0; }
+/* Baris spesifikasi: label, nilai, dan tombol hapus.
+   Kolom ketiga dipatok lebarnya, bukan `auto`: sel kosong di baris kepala
+   akan menyusut jadi 0px, dan judul kolomnya jadi melenceng dari isiannya. */
+.baris-ulang.spec, .baris-ulang-kepala.spec {
+  grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) 84px;
+}
+.baris-ulang .baris-hapus { width: 100%; padding: 7px 8px; font-size: 12px; }
+#spec-tambah { margin-top: 4px; padding: 8px 16px; }
+
+.baris-ulang-kepala {
+  display: grid; grid-template-columns: minmax(200px, 3fr) minmax(110px, 1fr);
+  gap: 10px; margin-bottom: 6px;
+  font: 800 11px var(--font-heading); letter-spacing: .06em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 72%, transparent);
+}
+
+/* ── pemicu bantuan "Selengkapnya" ────────────────────────────────────────
+   Uraian panjang dulu ditaruh sebagai kotak di sebelah kolomnya. Kotak itu
+   ikut menentukan tinggi baris grid, jadi satu kolom yang butuh penjelasan
+   panjang membuat seluruh barisnya melar. Sekarang uraiannya pindah ke popup
+   yang mengambang di atas halaman: tata letak kolomnya kembali seperti kolom
+   lain, apa pun panjang penjelasannya. */
+/* Baris kaki sebuah isian: keterangan singkat di kiri, pemicu bantuan di
+   kanan, dalam satu baris. */
+.field-kaki {
+  display: flex; flex-wrap: wrap;
+  align-items: baseline; justify-content: space-between;
+  gap: 4px 12px; margin-top: 4px;
+}
+.field-kaki .suffix { margin-top: 0; }
+.field-kaki .menu.bantuan { margin-top: 0; }
+
+.menu.bantuan { display: inline-block; }
+.menu.bantuan > summary {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 0; border: 0; background: none;
+  font: 400 11px var(--font-body);
+  color: var(--color-link); text-decoration: underline;
+}
+.menu.bantuan[open] > summary,
+.menu.bantuan > summary:hover {
+  background: none; color: var(--color-link); border: 0;
+}
+.tanda-tanya {
+  display: inline-grid; place-items: center;
+  width: 14px; height: 14px;
+  font: 700 10px var(--font-heading); line-height: 1;
+  color: var(--color-bg); background: var(--color-accent);
+  border-radius: 50%; text-decoration: none;
+}
+
+.menu-panel.panel-teks {
+  width: min(380px, calc(100vw - 24px));
+  padding: 12px 14px;
+  font: 400 11.5px/1.55 var(--font-body);
+  color: var(--color-text);
+}
+.menu-panel.panel-teks p { margin: 0 0 7px; }
+.menu-panel.panel-teks p:last-child { margin: 0; }
+.menu-panel.panel-teks strong { font-family: var(--font-heading); }
+
+/* Kotak pengaturan label "Hemat" dan penjelasan rumus. */
+.kotak-hemat, .kotak-rumus {
+  margin-top: 14px; padding: 14px 16px;
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  font-size: 12.5px; line-height: 1.6;
+}
+.kotak-rumus { margin: 0 0 16px; }
+.kotak-rumus strong { font-family: var(--font-heading); }
+
+/* ── galeri foto unit ─────────────────────────────────────────────────────── */
+.galeri {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px; margin-bottom: 16px;
+}
+.galeri-item {
+  margin: 0; border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md); overflow: hidden; background: var(--color-bg);
+}
+.galeri-item.is-utama { border-color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+.galeri-item img { width: 100%; height: 110px; object-fit: cover; display: block; }
+.galeri-item figcaption {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  padding: 8px; margin: 0;
+}
+
+/* Kotak pengembalian status rental. */
+.kotak-kembalikan {
+  margin-top: 16px; padding: 14px 16px;
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  font-size: 12.5px; line-height: 1.6;
+}
+.kotak-kembalikan strong { font-family: var(--font-heading); }
+.aksi-row .btn:disabled { opacity: .45; cursor: not-allowed; }
+
+/* ── jarak antar kolom form diperketat ───────────────────────────────────── */
+.admin-grid { gap: 10px 14px; }
+.admin-card { padding: 16px; margin-bottom: 12px; }
+.admin-card > h3 { margin-bottom: 10px; }
+/* Baris tombol yang berdiri sendiri di antara dua kartu butuh jarak bawah
+   juga. Tanpa itu "Simpan perubahan" menempel pada kartu di bawahnya dan
+   terbaca seolah milik kartu itu. Di dalam kartu, padding kartunya sudah
+   mengurus jaraknya. */
+.admin-actions { margin: 20px 0 24px; }
+.admin-card .admin-actions { margin-bottom: 0; }
+.field .suffix { line-height: 1.4; }
+.admin-h2 { margin: 20px 0 8px; }
+
+/* ── menu tindakan per baris tabel ───────────────────────────────────────── */
+.menu { position: relative; display: inline-block; text-align: left; }
+.menu > summary {
+  list-style: none; cursor: pointer; user-select: none;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  padding: 6px 12px;
+  font: var(--font-heading-weight) 12px var(--font-heading);
+  color: var(--color-text);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::marker { content: ""; }
+.menu > summary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.menu > summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.menu[open] > summary {
+  background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent);
+}
+.menu[open] .menu-caret { transform: rotate(180deg); }
+.menu-caret { display: inline-block; font-size: 10px; line-height: 1; }
+
+.menu-panel {
+  /* Sel tindakan memakai white-space:nowrap supaya tombolnya tidak terlipat,
+     dan panel ini mewarisinya — keterangan tiap butir jadi memanjang lurus
+     ke luar panel. Di sini teks harus membungkus seperti biasa. */
+  white-space: normal;
+  position: absolute; z-index: 60; top: calc(100% + 6px); right: 0;
+  width: 264px; padding: 5px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgb(0 0 0 / .18);
+}
+.menu-panel form { margin: 0; }
+
+/* Lebih spesifik dari `.u-act a` di site.css, supaya butir tautan dan butir
+   tombol tampil identik. */
+.menu-panel .menu-item {
+  display: block; width: 100%; text-align: left;
+  padding: 8px 10px; margin: 0;
+  background: none; border: 0; border-radius: var(--radius-md);
+  color: var(--color-text); text-decoration: none; cursor: pointer;
+  font: var(--font-heading-weight) 12.5px var(--font-heading);
+}
+.menu-panel .menu-item small {
+  display: block; margin-top: 3px;
+  font: 400 11.5px/1.45 var(--font-body);
+  color: color-mix(in srgb, var(--color-text) 66%, transparent);
+}
+.menu-panel .menu-item:hover:not(:disabled),
+.menu-panel .menu-item:focus-visible {
+  background: color-mix(in srgb, var(--color-text) 8%, transparent);
+  color: var(--color-text);
+}
+/* Butir mati diredupkan pada labelnya saja. Meredupkan seluruh tombol
+   dengan opacity ikut memudarkan keterangan alasannya sampai nyaris tidak
+   terbaca — padahal justru alasan itulah yang perlu dibaca. */
+.menu-panel .menu-item:disabled {
+  cursor: not-allowed;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.menu-panel .menu-item:disabled small { color: color-mix(in srgb, var(--color-text) 66%, transparent); }
+.menu-panel .menu-item:disabled:hover { background: none; }
+.menu-panel .menu-item.is-bahaya { color: #8f1d14; }
+html[data-theme="dark"] .menu-panel .menu-item.is-bahaya { color: #ffb4ab; }
+
+/* Kolom tindakan tidak boleh ikut menyusut sampai tombolnya terlipat. */
+.table th.u-act, .table td.u-act { width: 1%; white-space: nowrap; }
+
+/* ── jadwal pemakaian di bawah lencana status ────────────────────────────── */
+.jadwal-pakai { margin-top: 6px; font-size: 11.5px; line-height: 1.45; white-space: normal; }
+.jadwal-baris { font-weight: 600; }
+.jadwal-baris a { color: var(--color-link); text-decoration: none; }
+.jadwal-baris a:hover { text-decoration: underline; }
+.jadwal-pisah { opacity: .5; margin: 0 4px; }
+.jadwal-sub { color: color-mix(in srgb, var(--color-text) 66%, transparent); }
+.jadwal-tag {
+  display: inline-block; margin-left: 6px; padding: 1px 6px;
+  font: 400 10px var(--font-body);
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-text) 10%, transparent);
+  border-radius: var(--radius-md);
+}

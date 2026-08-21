@@ -1,0 +1,44 @@
+/* Pita dan penanda khusus demo statis. Dibuat oleh `php artisan demo:ekspor`;
+   jangan disunting di sini, suntinglah perintahnya. */
+.demo-pita {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px;
+  margin: 0;
+  padding: 9px 20px;
+  font: 400 12.5px/1.5 var(--font-body, system-ui, sans-serif);
+  color: #f3f2f2;
+  background: #14312a;
+}
+.demo-cap {
+  font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  font-size: 10.5px;
+  padding: 3px 8px; border: 1px solid rgb(243 242 242 / .4);
+}
+.demo-sisi-grup { display: flex; gap: 4px; }
+.demo-sisi {
+  padding: 4px 12px; font-weight: 700; text-decoration: none;
+  color: #f3f2f2; border: 1px solid rgb(243 242 242 / .35);
+}
+.demo-sisi:hover { background: rgb(243 242 242 / .12); color: #fff; }
+.demo-sisi.is-aktif { background: #f3f2f2; color: #14312a; border-color: #f3f2f2; }
+.demo-ket { opacity: .82; }
+.demo-keluar { margin-left: auto; color: #b8e6d0; white-space: nowrap; }
+
+@media (max-width: 700px) {
+  .demo-pita { gap: 6px 10px; padding: 8px 14px; font-size: 11.5px; }
+  .demo-ket { display: none; }
+  .demo-keluar { margin-left: 0; }
+}
+
+/* Tautan ke halaman yang tidak ikut diekspor. */
+[data-demo-mati] { cursor: not-allowed; opacity: .65; }
+
+.demo-catatan {
+  position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%);
+  z-index: 9999; max-width: min(520px, calc(100vw - 32px));
+  padding: 12px 16px;
+  font: 400 13px/1.55 var(--font-body, system-ui, sans-serif);
+  color: #f3f2f2; background: #201e1d;
+  border-left: 3px solid #6fbf9a;
+  box-shadow: 0 10px 30px rgb(0 0 0 / .35);
+}
+.demo-catatan b { font-weight: 800; display: block; margin-bottom: 3px; }
