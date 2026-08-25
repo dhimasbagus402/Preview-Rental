@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halaman ini tidak tersedia di demo</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/demo.css">
+</head>
+<body>
+
+<div class="demo-pita" role="note">
+  <span class="demo-cap">Demo statis</span>
+  <span class="demo-sisi-grup">
+    <a class="demo-sisi" href="index.html">Situs</a>
+    <a class="demo-sisi" href="admin.html">Panel admin</a>
+  </span>
+  <span class="demo-ket">Data contoh yang dibekukan &mdash; menjelajah dan menghitung biaya berfungsi, menyimpan tidak.</span>
+  <a class="demo-keluar" href="../index.html">Tentang aplikasi ini &rarr;</a>
+</div>
+
+<main class="wrap section" style="max-width:760px">
+  <p class="eyebrow kicker">Demo statis</p>
+  <h1 style="font-size:clamp(26px,4vw,38px);margin-bottom:14px">Halaman ini tidak tersedia di demo</h1>
+
+  <p style="font-size:16px;line-height:1.6;max-width:60ch">
+    Demo ini berisi halaman-halaman yang sudah dibekukan jadi berkas biasa,
+    tanpa server di belakangnya. Yang Anda klik barusan menuju halaman yang
+    dibuat sesuai isian &mdash; jadi tidak ada berkas yang bisa disiapkan
+    sebelumnya.
+  </p>
+
+  <p id="demo-tujuan" class="text-muted" style="font-size:13px;margin-top:4px" hidden></p>
+
+  <div class="hr"></div>
+
+  <h2 style="font-size:17px;margin-bottom:10px">Di aplikasi sungguhan</h2>
+  <p style="font-size:15px;line-height:1.6;max-width:60ch">
+    Halaman ini muncul seperti halaman lainnya. Yang membedakan hanya satu hal:
+    isinya dihitung saat itu juga dari data yang tersimpan, bukan disiapkan di
+    muka.
+  </p>
+
+  <div class="hr"></div>
+
+  <h2 style="font-size:17px;margin-bottom:12px">Lanjutkan menjelajah</h2>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="index.html">Beranda</a>
+    <a class="btn btn-secondary" href="alat-berat.html">Katalog alat</a>
+    <a class="btn btn-secondary" href="simulasi-biaya.html">Simulasi biaya</a>
+    <a class="btn btn-secondary" href="admin.html">Panel admin</a>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search).get('dari');
+    if (!q) return;
+
+    var el = document.getElementById('demo-tujuan');
+    el.textContent = 'Tautan yang diklik: ' + q;
+    el.hidden = false;
+  })();
+</script>
+
+</body>
+</html>
